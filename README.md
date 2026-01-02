@@ -1,5 +1,5 @@
 # EZEats
-#  Author: Khaylemsoft
+####  Author: Khaylemsoft
 e-shop grocery store website
 
 ##  What's it Really About?
