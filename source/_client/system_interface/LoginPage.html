@@ -1,0 +1,154 @@
+<!-- 
+    Login Page:
+        Form to log-in a user.
+ -->
+
+<!DOCTYPE html><html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>EZEats: Login Page</title>
+        <meta name="description" content="EZEats Grocery Website; Advanced Web Technology (CSC30025) Coursework Project">
+        <meta name="keywords" content="EZEats, Grocery, EZEats Grocery, Advanced Web Technology, Coursework, AWT, CSC30025,  HTML, CSS, JavaScript, PHP, AJAX">
+        <meta name="author" content="Ebenezer, Ayo-Metibemu, Keele Alumni">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="../_css_styles/NotificationControlStyle.css">
+        <link rel="stylesheet" href="../_css_styles/AuthPagesStyle.css">
+        <!-- ---- -->
+
+        <!-- External Scripts -->
+        <script defer src= "https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script defer src= "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script defer src= "https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <!-- -------- -->
+
+        <!-- Custom Scripts -->
+        <!-- <script defer type="module" src="../_scripts/ui_semantics/ThemeControl.js"></script> -->
+        <script defer type="module" src="../_scripts/system_semantics/NotificationControl.js"></script>    
+        <script defer type="module" src= "../_scripts/system_semantics/LoginPage.js"></script>
+        <!-- -------- -->
+    </head>
+
+    <body>
+        <div id="LoginContentHTML" class="auth-main-content">
+            
+        </div>
+
+        <script type="text/babel">
+            // <input id='CaptchaFileNameInput' type='hidden' name='captcha_filename' value=""/>
+            function Captcha(props)
+            {
+                return (
+                    <div id="CaptchaTextInputContainer" className="captcha-wrapper">
+                        <div className="captcha-input-section">
+                            <label className="captcha-label"
+                                for='CaptchaTextInput'>Enter Captcha's Text
+                                <span className="captcha-help-icon">?</span>
+                            </label>
+                            <input id="CaptchaTextInput" className="captcha-input-field"
+                                type="text" name="captcha_input"
+                                maxlength="50" placeholder="****"/>
+                        </div>
+                        <div className="captcha-image-container">
+                            <div className="captcha-image-wrapper">
+                                <img id="CaptchaImage" src=""
+                                    alt="Captcha" className="captcha-image"/>
+                            </div>
+                            <button type="button" id="CaptchaRefreshButton"
+                                className="captcha-refresh-btn">
+                                <span className="refresh-icon">↻</span> Refresh
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
+            class LoginForm extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = {email: '', password:'', emailMessage:''};
+
+                    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+                    this.handleChangePassword = this.handleChangePassword.bind(this);
+                    // this.handleSubmit = this.handleSubmit.bind(this);
+                }
+
+                handleChangeEmail(event) {
+                    this.setState({email: event.target.value});
+
+                    let textval = event.target.value;
+                    //user validation of the special characters
+                    if(textval.length >= 15 && (textval.indexOf('@')==-1 || textval.indexOf('.')==-1)){
+                        // alert("Please, write an actual email! Please!");
+                        this.setState({emailMessage: "Please, write an actual email! Please!"});
+                    }else{
+                        this.setState({emailMessage: ""});
+                    }
+                }
+
+                handleChangePassword(event) {
+                    this.setState({password: event.target.value});
+                    var textval = this.state.password;
+
+                }
+
+                render() {
+                    return (
+                        <div className="auth-content-wrapper">
+                            <div className="logo-container">
+                                <h1 className="website-logo">EZEats</h1>
+                                <p className="logo-tagline">Fresh & Easy</p>
+                            </div>
+                        
+                            <div id="LoginFormContent" className="form-container">
+                                <h2 className="form-title">Welcome Back</h2>
+                                <p className="form-subtitle">Log in to continue shopping</p>
+                                <form className="auth-form"
+                                    action="../../_server/system_semantics/systems/Authenticate.php"
+                                    method="post">
+                                    <div className="form-field-group">
+                                        <label className="input-label">Email Address<span className="required-asterisk">*</span>
+                                        </label>
+                                        <input type="email" name="email"
+                                            className="input-field"
+                                            value={this.state.email}
+                                            onChange={this.handleChangeEmail}
+                                            placeholder="your@email.com"/>
+                                        <div className="form-feedback-message error">{this.state.emailMessage}</div>
+                                    </div>
+                                    
+                                    <div className="form-field-group">
+                                        <label className="input-label">Password<span className="required-asterisk">*</span></label>
+                                        <input type="password" className="input-field" name="password"
+                                            value={this.state.password} placeholder="••••••••"
+                                            onChange={this.handleChangePassword} /><br></br><br></br>
+                                    </div>
+
+                                    <Captcha/>
+
+                                    <button type="submit" className="form-submit-button" value="Submit">Log In</button>
+                                </form>
+
+                                <div className="form-link-section">
+                                    <p className="form-link-text">
+                                        Don't have an account?
+                                        <a href="./RegisterPage.html"
+                                        className="form-link"> Register here</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+            <LoginForm />,
+            document.getElementById("LoginContentHTML")
+            );
+
+
+        </script>
+    </body>
+</html>

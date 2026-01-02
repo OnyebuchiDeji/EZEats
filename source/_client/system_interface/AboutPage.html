@@ -1,0 +1,166 @@
+<!-- 
+    About Page:
+    It talks about this website, who developed it, why, and contact information.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EZEats: About Page</title>
+    <meta name="description" content="EZEats Grocery Website; Advanced Web Technology (CSC30025) Coursework Project">
+    <meta name="keywords"
+        content="EZEats, Grocery, EZEats Grocery, Advanced Web Technology, Coursework, AWT, CSC30025,  HTML, CSS, JavaScript, PHP, AJAX">
+    <meta name="author" content="Ebenezer, Ayo-Metibemu, Keele Alumni">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../_css_styles/BaseStyle.css">
+    <link rel="stylesheet" href="../_css_styles/CoreStyle.css">
+    <link rel="stylesheet" href="../_css_styles/AboutPageStyle.css">
+    <!-- ---- -->
+
+    <!-- External Scripts -->
+    <script defer src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <!-- -------- -->
+
+    <!--
+           Custom Scripts
+    -->
+    <script type="module" src="../_scripts/ui_semantics/LoadNavbars.js"></script>
+
+    <script defer type="module" src="../_scripts/system_semantics/NotificationControl.js"></script>
+
+    <!-- The below .js only worked for the ClaudeAI-AboutPage.css version --- not v2-->
+    <!-- <script defer src="../_scripts/ui_semantics/AboutPageScrollEffect.js"></script> -->
+    <!-- -------- -->
+
+</head>
+
+
+<body>
+    <div id="TopNavbarHTML" class="ContentTarget"></div>
+
+    <!-- Add scroll progress bar -->
+    <div class="scroll-progress-bar"></div>
+
+    <div id="MainContentHTML" class="about-main-content">
+
+        <article id="AboutContent" class="about-article-wrapper">
+            <h1 class="PageTitle" class="about-page-title">About EZEats</h1>
+
+            <!-- Lead Paragraph with Drop Cap -->
+            <p class="about-paragraph lead">
+                Welcome to EZEats, your trusted online grocery destination since 2020...
+            </p>
+
+            <!-- Section Header -->
+            <h2 class="about-section-header">Our Mission</h2>
+
+            <p class="about-paragraph">
+                At EZEats, we believe shopping for groceries should be
+                <strong>easy, affordable, and convenient</strong>...
+            </p>
+
+            <!-- Sub-Header -->
+            <h3 class="about-sub-header">What Makes Us Different</h3>
+
+            <!-- List -->
+            <ul class="about-list">
+                <li class="about-list-item">Fresh produce delivered daily</li>
+                <li class="about-list-item">Competitive prices guaranteed</li>
+                <li class="about-list-item">Eco-friendly packaging</li>
+            </ul>
+
+            <!-- Blockquote -->
+            <blockquote class="about-blockquote">
+                <p class="blockquote-text">
+                    Quality is not an act, it is a habit.
+                </p>
+                <cite class="blockquote-author">Aristotle</cite>
+            </blockquote>
+
+            <!-- Info Box -->
+            <div class="about-info-box">
+                <h4 class="info-box-title">Did You Know?</h4>
+                <p class="info-box-content">
+                    We source 80% of our produce from local farms...
+                </p>
+            </div>
+
+            <!-- Divider -->
+            <hr class="about-divider">
+
+            <!-- Stats -->
+            <div class="about-stats-container">
+                <div class="about-stat-card">
+                    <div class="stat-number">50k+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="about-stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Products</div>
+                </div>
+            </div>
+
+
+            <hr class="about-divider">
+
+            <h2 class="about-section-header">Technical Overview</h2>
+            <p class="about-paragraph lead">
+                EZEats Grocery website was created using HTML, CSS, JS and PHP.
+                I created my own Styling Library which I call <i><b>Briygnonem</b></i>
+                for the different DOM elements that I utilize during the course of this project.
+                The method of design for the architecture of this website is unique.
+                I'll explain this.
+            </p>
+
+            <h2 class="about-section-header">Design Method</h2>
+            <p class="about-paragraph">
+                This site separates from other sites by utilizing more
+                modular techniques to reduce the amount of redundant code
+                that is prevalent in regular HTML websites.
+            </p>
+
+
+            <h3 class="about-sub-header">Client Side Design</h3>
+            <p class="about-paragraph">
+                It does this by
+                using JavaScript to load the HTML content of different parts
+                of the website into a single HTML file which, here, I call 'main.html'.
+                Page parts or elements such as the TopNavbar, Sidebar, and BottomNavbar are
+                loaded by scripts into this main file.
+                Likewise, the different content, such as the content of the Home page, the About page,
+                the 'MyHobbies' page, and the Projects List page are loaded into this single
+                HTML file in the same way.
+                Thus, the site utilizes local memory storage to enable persistence of recently visited pages.
+            </p>
+
+            <h3 class="about-sub-header">Server Side Design</h3>
+            <p class="about-paragraph">
+                Unlike normal methods, this website is designed
+                to not embed PHP into the DOM code.
+                Hence, rather, when a Page is loaded, the JavaScript sends
+                the appropriate request to the PHP of the server side.
+                It does this for forms and any other function that requires
+                communication with the server scripts.
+
+                All PHP code is separate and structured in a modular way such that each script
+                takes in parameters that specify what function it will perform.
+                Any data that is needed to be displayed in the DOM is returned to the JavaScript
+                that requested the data, and the data is used to populate the current DOM appropriately.
+            </p>
+
+            <h3 class="about-sub-header">Finally</h3>
+            <p class="about-paragraph">
+                This project is done, and I have learnt much from doing this and hopefully is proof of my expertise.
+            </p>
+        </article>
+
+    </div>
+
+    <div id="BottomNavbarHTML"></div>
+</body>
+
+</html>

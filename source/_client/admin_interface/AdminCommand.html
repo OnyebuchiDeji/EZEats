@@ -1,0 +1,297 @@
+<!-- 
+    This is a Single Page Application web page for just the administrator.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Administrator Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../_css_styles/BaseStyle.css">
+    <link rel="stylesheet" href="../_css_styles/AdminControl.css">
+    <link rel="stylesheet" href="../_css_styles/NotificationControl.css">
+    <!-- ---- -->
+
+    <!-- ---- -->
+
+    <!-- Scripts -->
+    <!-- <script type="module" src="../_scripts/structures/PagePersistentVariables.js"></script>
+    <script type="module" src="../_scripts/structures/Utility.js"></script>
+    <script type="module" src="../_scripts/structures/RequestStructures.js"></script> -->
+
+    <script type="module" src="../_scripts/system_semantics/NotificationControl.js"></script>
+
+    <script defer type="module" src="../_scripts/admin_semantics/AdminControl.js"></script>
+
+    <!-- ------ -->
+
+</head>
+
+<body>
+    <div id="MainContentHTML" class="admin-main-content">
+        <a href="../system_interface/MainPage.html" class="main-page-link">
+            <span class="link-icon">←</span>
+            <span>Back to Main Site</span>
+        </a>
+
+        <div class="admin-content-wrapper">
+            <div class="admin-console">
+                <div class="console-header">
+                    <h2 class="console-title">Admin Console</h2>
+                    <div class="console-status">
+                        <span class="status-indicator"></span>
+                        <span>System Online</span>
+                    </div>
+                </div>
+
+                <div id="Console" class="console-body"></div>
+            </div>
+
+            <div id="ConsoleControls" class="console-controls">
+
+                <div class="controls-header">
+                    <h2 class="controls-title">Admin Controls</h2>
+                    <p class="controls-subtitle">Manage products, orders, and system settings</p>
+                </div>
+
+                <div class="control-buttons-grid">
+
+                    <button class="control-button FormVisibilityToggleButton" type="button"
+                        id="Form-AddProduct"
+                        data-target-form-id="AddProduct">
+                        <span class="button-icon">➕</span>
+                        <span class="button-text">Add Product to Database</span>
+                    </button>
+
+                    <button class="control-button FormVisibilityToggleButton" type="button"
+                        id="Form-ViewOrderById"
+                        data-target-form-id="ViewOrderById">
+                        <span class="button-icon">➕</span>
+                        <span class="button-text">View Order By Id</span>
+                    </button>
+
+
+                    <button class="control-button FormVisibilityToggleButton" type="button"
+                        id="Form-ViewOrderByCustomer"
+                        data-target-form-id="ViewOrderByCustomer">
+                        <span class="button-icon">➕</span>
+                        <span class="button-text">View Order By Customer</span>
+                    </button>
+
+                    <button class="control-button FormVisibilityToggleButton" type="button"
+                        id="Form-ViewProductById"
+                        data-target-form-id="ViewProductById">
+                        <span class="button-icon">➕</span>
+                        <span class="button-text">View Product Information (By ID)</span>
+                    </button>
+
+                    <button class="control-button FormVisibilityToggleButton" type="button"
+                        id="Form-ViewAllProducts"
+                        data-target-form-id="ViewProducts">
+                        <span class="button-icon">➕</span>
+                        <span class="button-text">View Products</span>
+                    </button>
+
+                    <button class="control-button FormVisibilityToggleButton" type="button"
+                        id="Form-ViewAllCustomers"
+                        data-target-form-id="ViewAllCustomers">
+                        <span class="button-icon">➕</span>
+                        <span class="button-text">View Customers</span>
+                    </button>
+
+                    <button class="control-button FormVisibilityToggleButton" type="button"
+                        id="Form-ViewAllOrders"
+                        data-target-form-id="ViewAllOrders">
+                        <span class="button-icon">➕</span>
+                        <span class="button-text">View Orders</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+
+    <form id="AddProductModal" class="admin-modal-form AdminCommandForm" data-target-server-type="Input"
+        data-target-server-script="AddProduct.php" data-target-mode="">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Add New Product</h3>
+            <button type="button" class="modal-close-btn">×</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label form-label-required" for="name">Name</label>
+                <input class="form-input" type="text" id="name"
+                    name="name" placeholder="Enter product name" required/>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label form-label-required" for="category">Category</label>
+                <input class="form-input" type="text" id="category"
+                    name="category" placeholder="e.g., Dairy, Bakery" required/>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label form-label-required" for="subcategory">Subategory</label>
+                <input class="form-input" type="text" id="category" name="subcategory" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label form-label-required" for="price">Price</label>
+                <input class="form-input" type="number" id="price"
+                    name="price" placeholder="0.00" step="0.01" min="0" required/>
+                <p class="form-helper-text">Enter price in dollars</p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label form-label-required" for="image_name">Image Name</label>
+                <input class="form-input" type="text" id="image_name" name="image_name" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label form-label-required" for="details">Details</label>
+                <textarea class="form-input" type="text" id="details"
+                    name="details" maxlength="200" placeholder="Enter Product's Details"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label form-label-required" for="description">Description</label>
+                <textarea class="form-input" type="text" id="description"
+                name="description" placeholder="Enter Product's Description"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="form-cancel-btn">Cancel</button>
+            <button type="submit" class="form-submit-btn">Add Product</button>
+        </div>
+    </form>
+
+
+    <form id="ViewOrderByIdModal" class="admin-modal-form AdminCommandForm" data-target-server-type="Output"
+        data-target-server-script="ServeOrders.php" data-target-mode="SSOI">
+        <div class="modal-header">
+            <h3 class="modal-title">View Order By Id</h3>
+            <button type="button" class="modal-close-btn">×</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label form-label-required" for="order_id">Order Id</label>
+                <input class="form-input" type="text" id="order_id" name="order_id" required/>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="form-cancel-btn">Cancel</button>
+            <button type="submit" class="form-submit-btn">View Order</button>
+        </div>
+    </form>
+
+
+    <form id="ViewOrderByCustomerModal" class="admin-modal-form AdminCommandForm" data-target-server-type="Output"
+        data-target-server-script="ServeOrders.php" data-target-mode="SAOC">
+        <div class="modal-header">
+            <h3 class="modal-title">View Order By Customer</h3>
+            <button type="button" class="modal-close-btn">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label form-label-required" for="customer_email">Customer Email</label>
+                <input class="form-input" type="text" id="customer_email" name="customer_email" required/>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="form-cancel-btn">Cancel</button>
+            <button type="submit" class="form-submit-btn">View Order</button>
+        </div>
+    </form>
+
+
+    <form id="ViewProductByIdModal" class="admin-modal-form AdminCommandForm" data-target-server-type="Output"
+        data-target-server-script="ServeProducts.php" data-target-mode="SSP">
+        <div class="modal-header">
+            <h3 class="modal-title">View Product By Id</h3>
+            <button type="button" class="modal-close-btn">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label form-label-required" for="product_id">Product Id</label>
+                <input class="form-input" type="text" id="product_id" name="product_id" required/>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="form-cancel-btn">Cancel</button>
+            <button type="submit" class="form-submit-btn">View Product</button>
+        </div>
+    </form>
+
+    <form id="ViewProductsModal" class="admin-modal-form AdminCommandForm" data-target-server-type="Output"
+        data-target-server-script="ServeProducts.php" data-target-mode="SAP">
+        <div class="modal-header">
+            <h3 class="modal-title">View Products</h3>
+            <button type="button" class="modal-close-btn">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label form-label-required" for="products_view_max">View Products</label>
+                <input class="form-input" type="number" id="products_view_max"
+                    name="products_view_max" placeholder="-1" min="-1" value="-1" required/>
+                <p class="form-helper-text">Enter Max Number of Products to View</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="form-cancel-btn">Cancel</button>
+            <button type="submit" class="form-submit-btn">View Products</button>
+        </div>
+    </form>
+
+
+    <form id="ViewAllCustomersModal" class="admin-modal-form AdminCommandForm" data-target-server-type="Output"
+        data-target-server-script="ServeCustomers.php" data-target-mode="SAC">
+        <div class="modal-header">
+            <h3 class="modal-title">View All Customers</h3>
+            <button type="button" class="modal-close-btn">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label form-label-required" for="customers_view_max">View Customers</label>
+                <input class="form-input" type="number" id="customers_view_max"
+                    name="customers_view_max" placeholder="-1" min="-1" value="-1" required/>
+                <p class="form-helper-text">Enter Max Number of Customers to View</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="form-cancel-btn">Cancel</button>
+            <button type="submit" class="form-submit-btn">View Customers</button>
+        </div>
+    </form>
+
+    <form id="ViewAllOrdersModal" class="admin-modal-form AdminCommandForm" data-target-server-type="Output"
+        data-target-server-script="ServeOrders.php" data-target-mode="SAO">
+        <div class="modal-header">
+            <h3 class="modal-title">View All Orders</h3>
+            <button type="button" class="modal-close-btn">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label form-label-required" for="orders_view_max">View Orders</label>
+                <input class="form-input" type="number" id="orders_view_max"
+                name="orders_view_max" placeholder="-1" min="-1" value="-1" required/>
+                    <p class="form-helper-text">Enter Max Number of Orders to View</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="form-cancel-btn">Cancel</button>
+            <button type="submit" class="form-submit-btn">View Orders</button>
+        </div>
+    </form>
+</body>
+
+</html>

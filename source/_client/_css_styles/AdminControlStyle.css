@@ -1,0 +1,1245 @@
+
+
+/* 
+.AdminCommandForm.Invisible
+{
+    display: none;
+}
+
+.AdminCommandForm.Visible
+{
+    display: block;
+}
+
+.FormVisibilityToggleButton
+{
+
+}
+
+#ConsoleControls
+{
+    width: 90%;
+    max-width: 90svw;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5svh;
+}
+
+#Console
+{
+    box-sizing: border-box;
+    height: 60svh;
+    max-height: 60svh;
+    width: 80svw;
+    max-width: 80svw;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+
+    background-color: black;
+
+    color: greenyellow;    
+
+    padding-left: 5svw;
+    padding-right: 5svw;
+    padding-top: 5svh;
+    padding-bottom: 5svh;
+
+    margin: auto;
+}
+
+#Console::-webkit-scrollbar
+{
+    display: none;
+}
+
+
+Admin Control Admin Display Output
+details.AdminDisplayOutput
+{
+    display:block;
+    box-sizing: border-box;
+    border: 2px solid purple;
+    
+}
+
+details.AdminDisplayOutput summary
+{
+    list-style:outside;
+    cursor: pointer;
+}
+
+details.AdminDisplayOutput ul
+{
+    list-style:square;
+}
+details.AdminDisplayOutput ul li
+{
+    cursor: pointer;
+} */
+
+
+/* ADMIN CONTROL TRUE */
+/* 
+    HTML Structure:
+
+    <div class="admin-main-content">
+  
+  <!-- Main Page Link -->
+  <a href="/" class="main-page-link">
+    <span class="link-icon">←</span>
+    <span>Back to Main Site</span>
+  </a>
+
+  <!-- Admin Content Wrapper -->
+  <div class="admin-content-wrapper">
+    
+    <!-- CONSOLE SECTION -->
+    <div class="admin-console">
+      
+      <!-- Console Header -->
+      <div class="console-header">
+        <h2 class="console-title">Admin Console</h2>
+        <div class="console-status">
+          <span class="status-indicator"></span>
+          <span>System Online</span>
+        </div>
+      </div>
+
+      <!-- Console Body -->
+      <div class="console-body">
+        <ul class="console-list">
+          
+          <!-- Console Item 1 -->
+          <li class="console-list-item">
+            <details class="console-details">
+              <summary class="console-summary">Record 0 | ID 1</summary>
+              <div class="console-details-content">
+                <strong>Product:</strong> Whole Milk<br>
+                <strong>Price:</strong> $1.50<br>
+                <strong>Stock:</strong> <code>125 units</code><br>
+                <strong>Status:</strong> Active
+              </div>
+            </details>
+          </li>
+
+          <!-- Console Item 2 -->
+          <li class="console-list-item">
+            <details class="console-details">
+              <summary class="console-summary">Record 1 | ID 2</summary>
+              <div class="console-details-content">
+                <strong>Product:</strong> Free Range Eggs<br>
+                <strong>Price:</strong> $2.40<br>
+                <strong>Stock:</strong> <code>89 units</code><br>
+                <strong>Status:</strong> Active
+              </div>
+            </details>
+          </li>
+
+          <!-- Console Item 3 -->
+          <li class="console-list-item">
+            <details class="console-details">
+              <summary class="console-summary">Record 2 | ID 3</summary>
+              <div class="console-details-content">
+                <strong>Product:</strong> Butter<br>
+                <strong>Price:</strong> $1.50<br>
+                <strong>Stock:</strong> <code>56 units</code><br>
+                <strong>Status:</strong> Active
+              </div>
+            </details>
+          </li>
+
+          <!-- Add more items as needed -->
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- CONSOLE CONTROLS SECTION -->
+    <div class="console-controls">
+      
+      <!-- Controls Header -->
+      <div class="controls-header">
+        <h2 class="controls-title">Admin Controls</h2>
+        <p class="controls-subtitle">Manage products, orders, and system settings</p>
+      </div>
+
+      <!-- Control Buttons Grid -->
+      <div class="control-buttons-grid">
+        
+        <button class="control-button" onclick="openModal('addProduct')">
+          <span class="button-icon">➕</span>
+          <span class="button-text">Add Product</span>
+        </button>
+
+        <button class="control-button" onclick="openModal('editProduct')">
+          <span class="button-icon">✏️</span>
+          <span class="button-text">Edit Product</span>
+        </button>
+
+        <button class="control-button" onclick="openModal('deleteProduct')">
+          <span class="button-icon">🗑️</span>
+          <span class="button-text">Delete Product</span>
+        </button>
+
+        <button class="control-button" onclick="openModal('viewOrders')">
+          <span class="button-icon">📦</span>
+          <span class="button-text">View Orders</span>
+        </button>
+
+        <button class="control-button" onclick="openModal('viewCustomers')">
+          <span class="button-icon">👥</span>
+          <span class="button-text">View Customers</span>
+        </button>
+
+        <button class="control-button" onclick="openModal('settings')">
+          <span class="button-icon">⚙️</span>
+          <span class="button-text">System Settings</span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()"></div>
+
+<!-- ADD PRODUCT MODAL FORM -->
+<form class="admin-modal-form" id="addProductModal">
+  
+  <!-- Modal Header -->
+  <div class="modal-header">
+    <h3 class="modal-title">Add New Product</h3>
+    <button type="button" class="modal-close-btn" onclick="closeModal('addProduct')">×</button>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal-body">
+    
+    <div class="form-group">
+      <label class="form-label form-label-required">Product Name</label>
+      <input type="text" class="form-input" placeholder="Enter product name" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label form-label-required">Price</label>
+      <input type="number" class="form-input" placeholder="0.00" step="0.01" min="0" required>
+      <p class="form-helper-text">Enter price in dollars</p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label form-label-required">Stock Quantity</label>
+      <input type="number" class="form-input" placeholder="0" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Category</label>
+      <input type="text" class="form-input" placeholder="e.g., Dairy, Bakery">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-input" placeholder="Enter product description"></textarea>
+    </div>
+
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button type="button" class="form-cancel-btn" onclick="closeModal('addProduct')">Cancel</button>
+    <button type="submit" class="form-submit-btn">Add Product</button>
+  </div>
+
+</form>
+
+<!-- EDIT PRODUCT MODAL FORM -->
+<form class="admin-modal-form" id="editProductModal">
+  
+  <div class="modal-header">
+    <h3 class="modal-title">Edit Product</h3>
+    <button type="button" class="modal-close-btn" onclick="closeModal('editProduct')">×</button>
+  </div>
+
+  <div class="modal-body">
+    
+    <div class="form-group">
+      <label class="form-label form-label-required">Product ID</label>
+      <input type="number" class="form-input" placeholder="Enter product ID" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">New Product Name</label>
+      <input type="text" class="form-input" placeholder="Enter new name">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">New Price</label>
+      <input type="number" class="form-input" placeholder="0.00" step="0.01" min="0">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">New Stock Quantity</label>
+      <input type="number" class="form-input" placeholder="0" min="0">
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="form-cancel-btn" onclick="closeModal('editProduct')">Cancel</button>
+    <button type="submit" class="form-submit-btn">Update Product</button>
+  </div>
+
+</form>
+
+<!-- DELETE PRODUCT MODAL FORM -->
+<form class="admin-modal-form" id="deleteProductModal">
+  
+  <div class="modal-header">
+    <h3 class="modal-title">Delete Product</h3>
+    <button type="button" class="modal-close-btn" onclick="closeModal('deleteProduct')">×</button>
+  </div>
+
+  <div class="modal-body">
+    
+    <div class="form-group">
+      <label class="form-label form-label-required">Product ID</label>
+      <input type="number" class="form-input" placeholder="Enter product ID to delete" required>
+      <p class="form-helper-text error">⚠️ This action cannot be undone</p>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="form-cancel-btn" onclick="closeModal('deleteProduct')">Cancel</button>
+    <button type="submit" class="form-submit-btn">Delete Product</button>
+  </div>
+
+</form>
+ */
+
+/* AdminPage.css - Complete Admin Interface with Console & Modal Forms */
+
+/* ===================================
+   MAIN CONTENT AREA (NO NAV BARS)
+   =================================== */
+
+.admin-main-content {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(180deg, 
+    var(--bg-primary) 0%, 
+    var(--bg-secondary) 50%,
+    var(--bg-primary) 100%
+  );
+  position: relative;
+}
+
+/* Decorative Background */
+.admin-main-content::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatBackground 25s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatBackground {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-40px) scale(1.1);
+  }
+}
+
+/* ===================================
+   MAIN PAGE LINK
+   =================================== */
+
+.main-page-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.75rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.main-page-link:hover {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  border-color: var(--primary-purple);
+  transform: translateX(-5px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+}
+
+.link-icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.main-page-link:hover .link-icon {
+  transform: translateX(-3px);
+}
+
+/* ===================================
+   ADMIN CONTENT WRAPPER
+   =================================== */
+
+.admin-content-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   CONSOLE SECTION
+   =================================== */
+
+.admin-console {
+  background-color: #0a0a0a;
+  border: 3px solid var(--primary-purple);
+  border-radius: 16px;
+  padding: 0;
+  margin-bottom: 2rem;
+  box-shadow: 
+    0 0 40px rgba(124, 58, 237, 0.3),
+    inset 0 0 60px rgba(124, 58, 237, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Console Scan Line Effect */
+.admin-console::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(124, 58, 237, 0.8) 50%,
+    transparent 100%
+  );
+  animation: scanLine 4s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(600px);
+  }
+}
+
+/* Console Header */
+.console-header {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(124, 58, 237, 0.5);
+}
+
+.console-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.console-title::before {
+  content: '►';
+  font-size: 1.25rem;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.console-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 12px #10b981;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Console Body */
+.console-body {
+  padding: 2rem;
+  max-height: 500px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+}
+
+/* Custom Scrollbar */
+.console-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.console-body::-webkit-scrollbar-track {
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.console-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 5px;
+}
+
+.console-body::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-purple);
+}
+
+/* Console List */
+.console-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.console-list-item {
+  margin-bottom: 0.75rem;
+  animation: consoleItemFadeIn 0.5s ease both;
+}
+
+.console-list-item:nth-child(1) { animation-delay: 0.1s; }
+.console-list-item:nth-child(2) { animation-delay: 0.2s; }
+.console-list-item:nth-child(3) { animation-delay: 0.3s; }
+.console-list-item:nth-child(4) { animation-delay: 0.4s; }
+.console-list-item:nth-child(5) { animation-delay: 0.5s; }
+.console-list-item:nth-child(6) { animation-delay: 0.6s; }
+.console-list-item:nth-child(7) { animation-delay: 0.7s; }
+.console-list-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes consoleItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Console Details Element */
+.console-details {
+  background: rgba(124, 58, 237, 0.08);
+  border-left: 4px solid var(--primary-purple);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.console-details:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-left-width: 6px;
+}
+
+.console-details[open] {
+  background: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+/* Console Summary */
+.console-summary {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  color: #00ff00;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  list-style: none;
+  user-select: none;
+}
+
+.console-summary::-webkit-details-marker {
+  display: none;
+}
+
+.console-summary::before {
+  content: '▶';
+  font-size: 0.875rem;
+  transition: transform 0.3s ease;
+  color: var(--secondary-purple);
+}
+
+.console-details[open] .console-summary::before {
+  transform: rotate(90deg);
+}
+
+.console-summary:hover {
+  color: #00ff88;
+  text-shadow: 0 0 8px #00ff00;
+}
+
+/* Console Details Content */
+.console-details-content {
+  padding: 1rem 1.5rem 1.5rem 3rem;
+  color: #c084fc;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  animation: detailsSlideIn 0.3s ease;
+}
+
+@keyframes detailsSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.console-details-content strong {
+  color: #a78bfa;
+  font-weight: 700;
+}
+
+.console-details-content code {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: #fbbf24;
+  font-family: 'Courier New', monospace;
+}
+
+/* ===================================
+   CONSOLE CONTROLS SECTION
+   =================================== */
+
+.console-controls {
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.controls-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid var(--primary-purple);
+}
+
+.controls-title {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 0.5rem 0;
+}
+
+.controls-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Control Buttons Grid */
+.control-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.control-button {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(124, 58, 237, 0.08) 0%, 
+    rgba(167, 139, 250, 0.08) 100%
+  );
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.control-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.control-button:hover {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  border-color: var(--primary-purple);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+}
+
+.control-button:hover::before {
+  left: 100%;
+}
+
+.control-button:active {
+  transform: translateY(-2px);
+}
+
+.button-icon {
+  font-size: 1.5rem;
+}
+
+.button-text {
+  flex: 1;
+  text-align: left;
+}
+
+/* ===================================
+   MODAL OVERLAY
+   =================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===================================
+   MODAL FORM
+   =================================== */
+
+.admin-modal-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  max-width: 600px;
+  width: calc(100% - 2rem);
+  max-height: 90vh;
+  background-color: var(--bg-primary);
+  border: 3px solid var(--primary-purple);
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(124, 58, 237, 0.4);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-modal-form.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Modal Header */
+.modal-header {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: modalShimmer 3s ease-in-out infinite;
+}
+
+@keyframes modalShimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 2.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 4px;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.75rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  margin-bottom: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.form-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 2px;
+}
+
+.form-label-required::after {
+  content: '*';
+  color: var(--error);
+  margin-left: 0.375rem;
+  font-weight: 800;
+}
+
+/* Form Inputs */
+.form-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-purple);
+  background-color: var(--bg-primary);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+  transform: translateY(-2px);
+}
+
+.form-input:hover:not(:focus) {
+  border-color: var(--secondary-purple);
+}
+
+.form-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+/* Number Input Specific */
+input[type="number"].form-input {
+  -moz-appearance: textfield;
+}
+
+input[type="number"].form-input::-webkit-inner-spin-button,
+input[type="number"].form-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Textarea */
+textarea.form-input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Input States */
+.form-input.valid {
+  border-color: var(--success);
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.form-input.invalid {
+  border-color: var(--error);
+  background-color: rgba(239, 68, 68, 0.05);
+  animation: inputShake 0.4s ease;
+}
+
+@keyframes inputShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+/* Form Helper Text */
+.form-helper-text {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.form-helper-text.error {
+  color: var(--error);
+}
+
+.form-helper-text.success {
+  color: var(--success);
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 1.5rem 2.5rem;
+  background-color: var(--bg-secondary);
+  border-top: 2px solid var(--border-color);
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* Submit Button */
+.form-submit-btn {
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.form-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.5);
+}
+
+.form-submit-btn:hover::before {
+  left: 100%;
+}
+
+.form-submit-btn:active {
+  transform: translateY(-1px);
+}
+
+.form-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Cancel Button */
+.form-cancel-btn {
+  padding: 1rem 2rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-cancel-btn:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--primary-purple);
+  color: var(--primary-purple);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 1024px) {
+  .control-buttons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-main-content {
+    padding: 1.5rem;
+  }
+
+  .console-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .console-body {
+    padding: 1.5rem;
+    max-height: 400px;
+  }
+
+  .console-controls {
+    padding: 1.5rem;
+  }
+
+  .controls-title {
+    font-size: 1.75rem;
+  }
+
+  .control-buttons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-modal-form {
+    max-width: calc(100% - 1rem);
+    max-height: 95vh;
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 1.5rem;
+  }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .form-submit-btn,
+  .form-cancel-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .console-title {
+    font-size: 1.25rem;
+  }
+
+  .console-summary {
+    font-size: 0.9375rem;
+    padding: 0.875rem 1.25rem;
+  }
+
+  .console-details-content {
+    padding: 0.875rem 1.25rem 1.25rem 2.5rem;
+    font-size: 0.875rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .form-input {
+    padding: 0.875rem 1rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+/* Loading State */
+.loading {
+  pointer-events: none;
+  opacity: 0.6;
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 3px solid rgba(124, 58, 237, 0.3);
+  border-top-color: var(--primary-purple);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

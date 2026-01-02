@@ -1,0 +1,989 @@
+
+
+/* ################################################### */
+/* USER INFO BUTTON */
+/* ################################################### */
+
+/* Test to perceive when detail element is not focused */
+/* Not needed due to issues with the `details` element's functionality
+    of adding attribute 'ópen'.
+
+    So that is taken care of using JavaScript!
+ */
+/* details:not(details:focus-within) ul
+{
+    display: none;
+} */
+/* 
+details#UserInfoElement
+{
+    display: block;
+    box-sizing: border-box;
+    width: max(45px, 35%);
+    font-size: medium;
+    z-index: 999;
+    margin: 0px;
+    padding: 0px;
+    border: 2px solid orange;
+} */
+
+
+/* details#UserInfoElement:not(details#UserInfoElement:focus-within)
+{
+    border: 2px solid red;
+} */
+
+/* details#UserInfoElement summary
+{
+    display: block;
+    width: 100%;
+    list-style: none;
+    list-style-position: inside;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    border: 2px solid yellow;
+} */
+
+/* details#UserInfoElement summary svg
+{
+    width: inherit;
+    border: 2px solid purple;
+    margin: 0px;
+    padding: 0px;
+} */
+/* details#UserInfoElement summary svg path
+{
+    width: 350px;
+} */
+
+/* To position the list directly under the User Info Button */
+/* details#UserInfoElement ul
+{
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+
+    position:absolute;
+    list-style: none;
+    right: 245px;
+    right: 25svw;
+    right: max(25svw, min(25%, 275px));
+    top: calc(var(top-navbar-height) - 4svh);
+
+    background-color: var(--topNavbarBGColor);
+    border-radius: 5px;
+    border: 2px solid red;
+    margin: 0px;
+    padding: 0px;
+} */
+
+/* details#UserInfoElement:not(details#UserInfoElement:focus-within) ul
+{
+    display: none;
+} */
+    
+/* details#UserInfoElement ul li
+{
+    width: max-content;
+    padding: 5px 15px;
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid purple;
+} */
+ 
+/* 
+details#UserInfoElement ul li:hover
+{
+    background-color: ;
+    filter: brightness(30%);
+} */
+
+/* details#UserInfoElement ul li a
+{
+    color: var(--topNavbarAnchorCol);
+    font-style: none;
+    text-decoration: none;
+} */
+
+/* details#UserInfoElement ul li a:hover
+{
+    text-decoration: overline;
+} */
+
+
+/* @media screen and (max-width: 768px) {
+
+    details#UserInfoElement ul
+    {
+        display: flex;
+        flex-direction: column;
+    }
+} */
+
+/* ################################################# */
+
+
+/* ################################################# */
+/*
+    For the User Info Element's Icon being modified when
+    to show the user's Initials once they have logged in
+*/
+/* ################################################# */
+/* 
+details#UserInfoElement summary#UserInfoInitials
+{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+    /* vertical-align: middle;
+    justify-self: ; */
+}
+
+details#UserInfoElement summary#UserInfoInitials li
+{
+    box-sizing: border-box;
+    border: 4px solid black;
+    border-radius: 35px;
+} */
+
+
+/* ################################################# */
+
+
+/* ################################################# */
+/*
+    For the Nested/Inner User Info Details Element
+    That Displays the User's First and Last names, and contact
+*/
+/* ################################################# */
+
+/* details#UserInfoDetails
+{
+    display: block;
+    margin: auto;
+    z-index: 1005;
+}
+details#UserInfoDetails summary
+{
+    list-style: none;
+    cursor: pointer;
+    display: block;
+} */
+
+/* details#UserInfoDetails ul
+{
+    position: absolute;
+    list-style: none;
+    To position the list directly under the User Info Button
+    left: 80%;
+    top: 15%;
+    width: max-content;
+    background-color: var(--topNavbarBGColor);
+    border-radius: 5px;
+    margin: 0px;
+    padding: 0px;   
+} */
+
+/* details#UserInfoDetails:not(details#UserInfoDetails:focus-within) ul
+{
+    display:none;
+} */
+
+/* details#UserInfoDetails ul li
+{
+    padding: 2.5px 7.5px;
+    cursor: pointer;
+} */
+
+
+/* details#UserInfoElement ul li:hover
+{
+} */
+
+
+/* HTML Element Structure
+
+<!-- User Menu Details/Summary -->
+<details class="user-menu-details">
+  
+  <!-- Summary (Trigger) -->
+  <summary class="user-menu-summary">
+    <!-- User Icon (SVG) -->
+    <div class="user-icon-wrapper">
+      <svg class="user-icon" viewBox="0 0 24 24">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+    </div>
+
+    <!-- User Info -->
+    <div class="user-info-text">
+      <span class="user-name">John Doe</span>
+      <span class="user-role">Customer</span>
+    </div>
+
+    <!-- Dropdown Indicator -->
+    <div class="dropdown-indicator">
+      <svg viewBox="0 0 24 24">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </summary>
+
+  <!-- Dropdown Menu -->
+  <ul class="user-dropdown-menu">
+    
+    <!-- Optional Header -->
+    <li class="dropdown-header">
+      <h3 class="dropdown-header-title">My Account</h3>
+      <p class="dropdown-header-subtitle">Manage your profile and settings</p>
+    </li>
+
+    <!-- Menu Item 1: Link with Icon -->
+    <li class="user-menu-item">
+      <a href="#profile" class="user-menu-link">
+        <svg class="menu-link-icon" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span class="menu-link-text">My Profile</span>
+      </a>
+    </li>
+
+    <!-- Menu Item 2: Link with Badge -->
+    <li class="user-menu-item">
+      <a href="#orders" class="user-menu-link">
+        <svg class="menu-link-icon" viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="menu-link-text">My Orders</span>
+        <span class="menu-link-badge">3</span>
+      </a>
+    </li>
+
+    <!-- Menu Item 3: Link with Status -->
+    <li class="user-menu-item">
+      <a href="#notifications" class="user-menu-link">
+        <svg class="menu-link-icon" viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <span class="menu-link-text">Notifications</span>
+        <span class="menu-link-badge primary">5</span>
+      </a>
+    </li>
+
+    <!-- Menu Item 4: Regular Link -->
+    <li class="user-menu-item">
+      <a href="#wishlist" class="user-menu-link">
+        <svg class="menu-link-icon" viewBox="0 0 24 24">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+        <span class="menu-link-text">Wishlist</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <li><hr class="menu-divider"></li>
+
+    <!-- Menu Item 5: Link with Settings Icon -->
+    <li class="user-menu-item">
+      <a href="#settings" class="user-menu-link">
+        <svg class="menu-link-icon" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m-2 2l-4.2 4.2M23 12h-6m-6 0H1m18.2 5.2l-4.2-4.2m-2-2l-4.2-4.2"></path>
+        </svg>
+        <span class="menu-link-text">Settings</span>
+      </a>
+    </li>
+
+    <!-- Menu Item 6: Toggle/Switch -->
+    <li class="user-menu-item">
+      <div class="menu-item-with-toggle">
+        <label class="toggle-label">
+          <svg class="menu-link-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span>Dark Mode</span>
+        </label>
+        <div class="toggle-switch" onclick="this.classList.toggle('active')"></div>
+      </div>
+    </li>
+
+    <!-- Divider -->
+    <li><hr class="menu-divider"></li>
+
+    <!-- Menu Item 7: Help -->
+    <li class="user-menu-item">
+      <a href="#help" class="user-menu-link">
+        <svg class="menu-link-icon" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <span class="menu-link-text">Help & Support</span>
+      </a>
+    </li>
+
+    <!-- Menu Item 8: Logout (Danger) -->
+    <li class="user-menu-item danger">
+      <a href="#logout" class="user-menu-link">
+        <svg class="menu-link-icon" viewBox="0 0 24 24">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        <span class="menu-link-text">Logout</span>
+      </a>
+    </li>
+
+    <!-- Optional Footer -->
+    <li class="dropdown-footer">
+      <p class="dropdown-footer-text">
+        Need help? <a href="#contact" class="dropdown-footer-link">Contact us</a>
+      </p>
+    </li>
+
+  </ul>
+
+</details>
+*/
+
+/* UserMenuDetails.css - Details/Summary User Menu Dropdown */
+
+/* ===================================
+   DETAILS CONTAINER
+   =================================== */
+
+.user-menu-details {
+  position: relative;
+  display: inline-block;
+}
+
+/* Remove default marker */
+.user-menu-details summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.user-menu-details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ===================================
+   SUMMARY (TRIGGER BUTTON)
+   =================================== */
+
+.user-menu-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient overlay */
+.user-menu-summary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(124, 58, 237, 0.03) 0%, 
+    rgba(167, 139, 250, 0.03) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.user-menu-summary:hover {
+  border-color: var(--primary-purple);
+  background-color: var(--bg-primary);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+  transform: translateY(-2px);
+}
+
+.user-menu-summary:hover::before {
+  opacity: 1;
+}
+
+/* Active/Open state */
+.user-menu-details[open] .user-menu-summary {
+  border-color: var(--primary-purple);
+  background: linear-gradient(135deg, 
+    rgba(124, 58, 237, 0.08) 0%, 
+    rgba(167, 139, 250, 0.08) 100%
+  );
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+}
+
+/* ===================================
+   USER ICON (SVG)
+   =================================== */
+
+.user-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+}
+
+.user-icon {
+  width: 20px;
+  height: 20px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.user-menu-summary:hover .user-icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.user-menu-summary:hover .user-icon {
+  transform: rotate(5deg);
+}
+
+/* Icon pulse animation when menu opens */
+.user-menu-details[open] .user-icon-wrapper {
+  animation: iconPulse 0.5s ease;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* ===================================
+   USER INFO TEXT
+   =================================== */
+
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  position: relative;
+  z-index: 1;
+}
+
+.user-name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.user-menu-summary:hover .user-name {
+  color: var(--primary-purple);
+}
+
+/* ===================================
+   DROPDOWN INDICATOR
+   =================================== */
+
+.dropdown-indicator {
+  width: 20px;
+  height: 20px;
+  margin-left: 0.25rem;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-indicator svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--text-secondary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s ease;
+}
+
+.user-menu-summary:hover .dropdown-indicator svg {
+  stroke: var(--primary-purple);
+}
+
+/* Rotate when open */
+.user-menu-details[open] .dropdown-indicator {
+  transform: rotate(180deg);
+}
+
+/* ===================================
+   DROPDOWN MENU (UNORDERED LIST)
+   =================================== */
+
+.user-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 280px;
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px var(--shadow);
+  z-index: 1000;
+  overflow: hidden;
+  animation: dropdownSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top right;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Dropdown arrow pointer */
+.user-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--bg-primary);
+  border-left: 2px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
+  transform: rotate(45deg);
+}
+
+/* ===================================
+   DROPDOWN HEADER (OPTIONAL)
+   =================================== */
+
+.dropdown-header {
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, 
+    rgba(124, 58, 237, 0.08) 0%, 
+    rgba(167, 139, 250, 0.08) 100%
+  );
+  border-bottom: 2px solid var(--border-color);
+}
+
+.dropdown-header-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.5rem 0;
+}
+
+.dropdown-header-subtitle {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ===================================
+   MENU ITEMS (LIST ITEMS)
+   =================================== */
+
+.user-menu-item {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  animation: menuItemFadeIn 0.3s ease both;
+}
+
+/* Staggered animation for items */
+.user-menu-item:nth-child(1) { animation-delay: 0.05s; }
+.user-menu-item:nth-child(2) { animation-delay: 0.1s; }
+.user-menu-item:nth-child(3) { animation-delay: 0.15s; }
+.user-menu-item:nth-child(4) { animation-delay: 0.2s; }
+.user-menu-item:nth-child(5) { animation-delay: 0.25s; }
+.user-menu-item:nth-child(6) { animation-delay: 0.3s; }
+.user-menu-item:nth-child(7) { animation-delay: 0.35s; }
+.user-menu-item:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes menuItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Left accent bar (appears on hover) */
+.user-menu-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(180deg, var(--primary-purple), var(--secondary-purple));
+  transition: width 0.3s ease;
+}
+
+.user-menu-item:hover::before {
+  width: 4px;
+}
+
+/* ===================================
+   MENU LINKS
+   =================================== */
+
+.user-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.user-menu-link:hover {
+  background: linear-gradient(90deg, 
+    rgba(124, 58, 237, 0.08) 0%, 
+    transparent 100%
+  );
+  color: var(--primary-purple);
+  padding-left: 2rem;
+}
+
+/* Link Icon */
+.menu-link-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke: var(--text-secondary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.3s ease;
+}
+
+.user-menu-link:hover .menu-link-icon {
+  stroke: var(--primary-purple);
+  transform: scale(1.1);
+}
+
+/* Link Text */
+.menu-link-text {
+  flex: 1;
+}
+
+/* Link Badge (notifications, counts, etc.) */
+.menu-link-badge {
+  padding: 0.25rem 0.625rem;
+  background-color: var(--error);
+  color: white;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: auto;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.menu-link-badge.primary {
+  background-color: var(--primary-purple);
+}
+
+.menu-link-badge.success {
+  background-color: var(--success);
+}
+
+.menu-link-badge.warning {
+  background-color: var(--warning);
+}
+
+/* Link Status Indicator */
+.menu-link-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: auto;
+}
+
+.menu-link-status.online {
+  background-color: var(--success);
+  box-shadow: 0 0 8px var(--success);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.menu-link-status.offline {
+  background-color: var(--text-secondary);
+}
+
+/* ===================================
+   MENU DIVIDER
+   =================================== */
+
+.menu-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--border-color) 20%,
+    var(--border-color) 80%,
+    transparent 100%
+  );
+  margin: 0.5rem 0;
+}
+
+/* ===================================
+   SPECIAL ITEM TYPES
+   =================================== */
+
+/* Item with Switch/Toggle */
+.menu-item-with-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item-with-toggle:hover {
+  background: linear-gradient(90deg, 
+    rgba(124, 58, 237, 0.05) 0%, 
+    transparent 100%
+  );
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background-color: var(--border-color);
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.active {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+}
+
+.toggle-switch.active::after {
+  transform: translateX(22px);
+}
+
+/* Item with Button */
+.menu-item-with-button {
+  padding: 1rem 1.5rem;
+}
+
+.menu-item-button {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.menu-item-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+}
+
+.menu-item-button.secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.menu-item-button.secondary:hover {
+  border-color: var(--primary-purple);
+  color: var(--primary-purple);
+}
+
+/* Logout/Danger Item */
+.user-menu-item.danger .user-menu-link {
+  color: var(--error);
+}
+
+.user-menu-item.danger .user-menu-link:hover {
+  background: linear-gradient(90deg, 
+    rgba(239, 68, 68, 0.08) 0%, 
+    transparent 100%
+  );
+}
+
+.user-menu-item.danger .menu-link-icon {
+  stroke: var(--error);
+}
+
+/* ===================================
+   DROPDOWN FOOTER (OPTIONAL)
+   =================================== */
+
+.dropdown-footer {
+  padding: 1rem 1.5rem;
+  background-color: var(--bg-secondary);
+  border-top: 2px solid var(--border-color);
+  text-align: center;
+}
+
+.dropdown-footer-text {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.dropdown-footer-link {
+  color: var(--primary-purple);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.dropdown-footer-link:hover {
+  color: var(--primary-purple-hover);
+  text-decoration: underline;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  .user-dropdown-menu {
+    min-width: 260px;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .user-info-text {
+    display: none;
+  }
+
+  .dropdown-indicator {
+    display: none;
+  }
+
+  .user-menu-summary {
+    padding: 0.625rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-dropdown-menu {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .user-dropdown-menu::before {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
+
+/* ===================================
+   ACCESSIBILITY
+   =================================== */
+
+.user-menu-details:focus-within .user-menu-summary {
+  outline: 3px solid var(--primary-purple);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .user-menu-details *,
+  .user-menu-details *::before,
+  .user-menu-details *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,199 @@
+<!-- 
+    Register Page:
+        Form to register a user.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EZEats: Register Page</title>
+    <meta name="description"
+        content="EZEats Grocery Website; Advanced Web Technology (CSC30025) Coursework Project">
+    <meta name="keywords"
+        content="EZEats, Grocery, EZEats Grocery, Advanced Web Technology, Coursework, AWT, CSC30025,  HTML, CSS, JavaScript, PHP, AJAX">
+    <meta name="author" content="Ebenezer, Ayo-Metibemu, Keele Alumni">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../_css_styles/NotificationControlStyle.css">
+    <link rel="stylesheet" href="../_css_styles/AuthPagesStyle.css">
+    <!-- ------ -->
+
+    <!-- External Scripts -->
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <!-- -------- -->
+
+    <!-- Custom Scripts -->
+    <script defer type="module" src="../_scripts/system_semantics/NotificationControl.js"></script>
+    <script type="module" src="../_scripts/system_semantics/RegisterPage.js"></script>
+    <!-- --------- -->
+</head>
+
+<body>
+    <div id="RegisterContentHTML" class="auth-main-content">
+    </div>
+
+    <script type="text/babel">
+
+        class RegisterForm extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    userName: "", firstName: "", lastName: "",
+                    phone: "", email: "", password: "",
+                    unMessage: "", fnMessage: "", lnMessage: "",
+                    phoneMessage: "", emailMessage: ""
+                };
+
+                this.handleChangeUserName = this.handleChangeUserName.bind(this);
+                this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
+                this.handleChangeLastName = this.handleChangeLastName.bind(this);
+                this.handleChangePhone = this.handleChangePhone.bind(this);
+                this.handleChangeEmail = this.handleChangeEmail.bind(this);
+                this.handleChangePassword = this.handleChangePassword.bind(this);
+            }
+
+            verifyNameField(msgName, targetElement) {
+                let val = targetElement.value;
+                //user validation of the special characters
+                let iChars = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
+                for (var i = 0; i < val.length; i++) {
+                    if (iChars.indexOf(val.charAt(i)) != -1) {
+                        this.setState({ msgName: "Your username should not have characters: !@#$%^&*()+=-[]\\\';,./{}|\":<>? \nThese are not allowed.\n Please remove them and try again." });
+                    } else {
+                        this.setState({ msgName: "" });
+                    }
+                }
+            }
+
+            handleChangeUserName(event) {
+                this.setState({ userName: event.target.value });
+                //this.setState({value: event.target.value.toLowerCase()});
+                this.verifyNameField('unMessage', event.target);
+            }
+            handleChangeFirstName(event) {
+                this.setState({ firstName: event.target.value });
+                this.verifyNameField('fnMessage', event.target);
+            }
+            handleChangeLastName(event) {
+                this.setState({ lastName: event.target.value });
+                this.verifyNameField('lnMessage', event.target);
+            }
+
+            handleChangePhone(event) {
+                this.setState({ phone: event.target.value });
+                let textval = event.target.value;
+                //user validation of the special characters
+                if (isNaN(textval)) {
+                    this.setState({ phoneMessage: "Please! Numbers should only have numbers." });
+                } else { this.setState({ phoneMessage: "" }); }
+            }
+
+            handleChangeEmail(event) {
+                this.setState({ email: event.target.value });
+                let textval = event.target.value;
+                //user validation of the special characters
+                if (textval.length >= 15 && (textval.indexOf('@') == -1 || textval.indexOf('.') == -1)) {
+                    this.setState({ emailMessage: "Please, write an actual email! Please!" });
+                } else {
+                    this.setState({ emailMessage: "" });
+                }
+            }
+
+            handleChangePassword(event) {
+                this.setState({ password: event.target.value });
+                var textval = this.state.password;
+            }
+
+            render() {
+                return (
+                    <div id="RegisterFormContent" className="auth-content-wrapper">
+                        <div className="logo-container">
+                            <h1 className="website-logo">EZEats</h1>
+                            <p className="logo-tagline">Fresh & Easy</p>
+                        </div>
+
+                        <div className="form-container">
+                            <h2 className="form-title">Welcome Back</h2>
+                            <p className="form-subtitle">Register to continue shopping</p>
+
+                            <form className="auth-form"
+                                action="../../_server/system_semantics/systems/Register.php"
+                                method="post">
+                                <div className="form-field-group">
+                                    <label className="input-label">
+                                        User Name<span className="required-asterisk">*</span>
+                                    </label>
+                                    <input type="text" className="input-field"
+                                    name="username" value={this.state.userName} onChange={this.handleChangeUserName} />
+                                    <div className="form-feedback-message error">{this.state.unMessage}</div>
+                                </div>
+
+                                <div className="form-field-group">
+                                    <label className="input-label">First Name<span className="required-asterisk">*</span></label>
+                                    <input type="text" className="input-field"
+                                        name="firstname" value={this.state.firstName}
+                                        onChange={this.handleChangeFirstName}/>
+                                    <div className="form-feedback-message error">{this.state.fnMessage}</div>
+                                </div>
+
+                                <div className="form-field-group">
+                                    <label className="input-label">Last Name<span className="required-asterisk">*</span></label>
+                                    <input type="text" className="input-field"
+                                        name="lastname" value={this.state.lastName}
+                                        onChange={this.handleChangeLastName}/>
+                                    <div className="form-feedback-message error">{this.state.lnMessage}</div>
+                                </div>
+
+                                <div className="form-field-group">
+                                    <label className="input-label">Phone Number<span className="required-asterisk">*</span></label>
+                                    <input type="text" className="input-field"
+                                        name="phone" value={this.state.phone} onChange={this.handleChangePhone} />
+                                    <div className="form-feedback-message error">{this.state.phoneMessage}</div>
+                                </div>
+
+                                <div className="form-field-group">
+                                    <label className="input-label">Email Address<span className="required-asterisk">*</span></label>
+                                    <input type="email" name="email" 
+                                        className="input-field"
+                                        value={this.state.email}
+                                        onChange={this.handleChangeEmail}
+                                        placeholder="your@email.com"/>
+                                    <div className="form-feedback-message error">{this.state.emailMessage}</div>
+                                </div>
+
+                                <div className="form-field-group">
+                                    <label className="input-label">Password<span className="required-asterisk">*</span></label>
+                                    <textarea type="text" className="input-field" name="password"
+                                        value={this.state.password} placeholder="••••••••"
+                                        onChange={this.handleChangePassword} />
+                                </div>
+
+                                <button type="submit" className="form-submit-button" value="Submit">Register</button>
+                            </form>
+                            <div class="form-link-section">
+                                <p class="form-link-text">
+                                Already have an account?
+                                <a href="./LoginPage.html" class="form-link"> Log in here</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <RegisterForm />,
+            document.getElementById('RegisterContentHTML')
+        );
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!-- 
+    About Page:
+    It talks about this website, who developed it, why, and contact information.
+ -->
+
+ <!DOCTYPE html><html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>EZEats: Checkout Page</title>
+        <meta name="description" content="EZEats; Grocery Website; Advanced Web Technology (CSC30025) Coursework Project">
+        <meta name="keywords" content="EZEats, Grocery, EZEats Grocery, Advanced Web Technology, Coursework, AWT, CSC30025, HTML, CSS, JavaScript, PHP, AJAX">
+        <meta name="author" content="Ebenezer, Ayo-Metibemu, Keele Alumni">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="../_css_styles/BaseStyle.css">
+        <link rel="stylesheet" href="../_css_styles/CoreStyle.css">
+        <link rel="stylesheet" href="../_css_styles/CheckoutPage.css">
+        <!-- ---- -->
+
+        <!-- External Scripts -->
+        <script defer src= "https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <!-- -------- -->
+
+        <!--
+            Custom Scripts
+            For my scripts that are modules and that use modules,
+            ensure to specify their type as module
+        -->
+        <script type="module" src="../_scripts/ui_semantics/LoadNavbars.js"></script>
+        <!-- <script defer type="module" src="../_scripts/system_semantics/NotificationControl.js"></script> -->
+        
+        <!-- For some reason the CartBarUI script commented out below
+            prevents the CheckoutPagePurchaseButton's 'click' event listener from registering
+            It's been fixed with the new `Requestor` class
+        -->
+        <!-- <script defer type="module" src= "../_scripts/ui_semantics/CartBarUI.js"></script> -->
+            
+        <script defer type="module" src="../_scripts/system_semantics/CheckoutPage.js"></script>
+
+        <!-- ------- -->
+    </head>
+    
+    <body>
+        <!--  -->
+        <div id="TopNavbarHTML" class="ContentTarget"></div>
+
+        <div id="MainContentHTML" class="checkout-main-content">
+            <div class="order-summary-wrapper">
+                <!-- Banner -->
+                <div class="order-summary-banner">
+                    <h1 class="banner-title">Your Order Summary</h1>
+                    <span class="banner-subtitle">Review your purchase details</span>
+                </div>
+
+                <div id="OrderSummary" class="order-summary-card"></div>
+
+                <div id="Message" class="purchase-message"></div>
+
+                <!-- Purchase Button -->
+                <button type="button" id="CheckoutPagePurchaseButton"
+                    class="purchase-button">
+                    <span class="purchase-button-icon">🛒 Complete Purchase</span>
+                </button>
+            </div>
+        </div>
+        
+        <div id="BottomNavbarHTML"></div>
+    </body>
+</html>

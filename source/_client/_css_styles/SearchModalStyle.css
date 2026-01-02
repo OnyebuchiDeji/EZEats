@@ -1,0 +1,995 @@
+/* SearchModal.css - Search Modal with Product Results */
+
+/**
+    HTML Structure
+
+    <!-- Search Modal Overlay -->
+<div class="search-modal-overlay" id="searchOverlay" onclick="closeSearchModal()"></div>
+
+<!-- Search Modal -->
+<div class="search-modal" id="searchModal">
+  
+  <!-- Modal Header with Search Input -->
+  <div class="search-modal-header">
+    
+    <!-- Close Button -->
+    <button class="search-modal-close" onclick="closeSearchModal()">×</button>
+
+    <!-- Search Input Container -->
+    <div class="search-input-container">
+      <div class="search-input-wrapper">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          class="search-input" 
+          placeholder="Search for products..."
+          id="searchInput"
+          autofocus
+        >
+        <button class="search-clear-btn" onclick="clearSearch()">✕</button>
+      </div>
+      
+      <!-- Search Stats -->
+      <div class="search-stats">
+        Showing <strong>12 results</strong> for "milk"
+      </div>
+    </div>
+
+    <!-- Optional: Keyboard Shortcut Hint -->
+    <div class="search-shortcuts-hint">
+      Press <span class="shortcut-key">ESC</span> to close
+    </div>
+
+  </div>
+
+  <!-- Modal Content Wrapper -->
+  <div class="search-modal-content">
+    
+    <!-- Optional: Filter Chips -->
+    <div class="search-filters">
+      <button class="filter-chip active">All</button>
+      <button class="filter-chip">Dairy</button>
+      <button class="filter-chip">Bakery</button>
+      <button class="filter-chip">Beverages</button>
+      <button class="filter-chip">On Sale</button>
+    </div>
+
+    <!-- Search Results List -->
+    <div class="search-results-list">
+      
+      <!-- Product Card 1 -->
+      <div class="search-product-card" onclick="viewProduct(1)">
+        <div class="search-product-image-wrapper">
+          <img src="milk.jpg" alt="Whole Milk" class="search-product-image">
+          <div class="search-product-tags">
+            <span class="search-product-tag tag-featured">Featured</span>
+          </div>
+        </div>
+
+        <div class="search-product-info">
+          <span class="search-product-category">Dairy</span>
+          <h3 class="search-product-name">Whole Milk</h3>
+          <p class="search-product-description">
+            Fresh whole milk, 3.5% fat. Perfect for drinking, cooking, and baking. Locally sourced from trusted farms.
+          </p>
+          <div class="search-product-rating">
+            <span class="rating-stars">★★★★★</span>
+            <span class="rating-count">(147 reviews)</span>
+          </div>
+        </div>
+
+        <div class="search-product-price-section">
+          <div>
+            <div class="search-product-price">$1.50</div>
+          </div>
+          <div class="search-stock-status in-stock">
+            <span class="stock-indicator"></span>
+            <span>In Stock</span>
+          </div>
+          <button class="search-add-to-cart" onclick="addToCart(1); event.stopPropagation();">
+            <span class="cart-icon">🛒</span>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="search-product-card" onclick="viewProduct(2)">
+        <div class="search-product-image-wrapper">
+          <img src="eggs.jpg" alt="Free Range Eggs" class="search-product-image">
+          <div class="search-product-tags">
+            <span class="search-product-tag tag-new">New</span>
+          </div>
+        </div>
+
+        <div class="search-product-info">
+          <span class="search-product-category">Dairy</span>
+          <h3 class="search-product-name">Free Range Eggs</h3>
+          <p class="search-product-description">
+            Farm-fresh free range eggs. High in protein, rich in vitamins. Dozen pack.
+          </p>
+          <div class="search-product-rating">
+            <span class="rating-stars">★★★★☆</span>
+            <span class="rating-count">(89 reviews)</span>
+          </div>
+        </div>
+
+        <div class="search-product-price-section">
+          <div>
+            <div class="search-product-price">$2.40</div>
+          </div>
+          <div class="search-stock-status in-stock">
+            <span class="stock-indicator"></span>
+            <span>In Stock</span>
+          </div>
+          <button class="search-add-to-cart" onclick="addToCart(2); event.stopPropagation();">
+            <span class="cart-icon">🛒</span>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Card 3 - With Sale -->
+      <div class="search-product-card" onclick="viewProduct(3)">
+        <div class="search-product-image-wrapper">
+          <img src="butter.jpg" alt="Butter" class="search-product-image">
+          <div class="search-product-tags">
+            <span class="search-product-tag tag-sale">Sale</span>
+          </div>
+        </div>
+
+        <div class="search-product-info">
+          <span class="search-product-category">Dairy</span>
+          <h3 class="search-product-name">Premium Butter</h3>
+          <p class="search-product-description">
+            Creamy, rich butter made from fresh cream. Perfect for spreading and cooking.
+          </p>
+          <div class="search-product-rating">
+            <span class="rating-stars">★★★★★</span>
+            <span class="rating-count">(203 reviews)</span>
+          </div>
+        </div>
+
+        <div class="search-product-price-section">
+          <div>
+            <div class="search-product-price">$1.20</div>
+            <div class="search-product-price-original">$1.50</div>
+            <span class="search-discount-badge">20% Off</span>
+          </div>
+          <div class="search-stock-status low-stock">
+            <span class="stock-indicator"></span>
+            <span>Low Stock</span>
+          </div>
+          <button class="search-add-to-cart" onclick="addToCart(3); event.stopPropagation();">
+            <span class="cart-icon">🛒</span>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Add more product cards as needed -->
+
+    </div>
+
+  </div>
+
+</div>
+
+Empty State (No Results):
+
+<div class="search-modal-content">
+  <div class="search-empty-state">
+    <div class="search-empty-icon">🔍</div>
+    <h3 class="search-empty-title">No results found</h3>
+    <p class="search-empty-message">
+      Try searching with different keywords or browse our categories
+    </p>
+  </div>
+</div>
+*/
+
+
+/* ===================================
+   SEARCH MODAL OVERLAY
+   =================================== */
+
+.search-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.search-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===================================
+   SEARCH MODAL CONTAINER
+   =================================== */
+
+.search-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  max-width: 900px;
+  width: calc(100% - 2rem);
+  max-height: 85vh;
+  background-color: var(--bg-primary);
+  border: 3px solid var(--primary-purple);
+  border-radius: 24px;
+  box-shadow: 
+    0 24px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(124, 58, 237, 0.5);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.search-modal.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Animated Glow Border */
+.search-modal::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(
+    45deg,
+    var(--primary-purple),
+    var(--secondary-purple),
+    var(--primary-purple)
+  );
+  background-size: 300% 300%;
+  border-radius: 24px;
+  z-index: -1;
+  animation: glowingBorder 4s ease infinite;
+  opacity: 0.6;
+}
+
+@keyframes glowingBorder {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ===================================
+   MODAL HEADER
+   =================================== */
+
+.search-modal-header {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(124, 58, 237, 0.3);
+  /*
+    Added by me: to ensure the search-modal-header
+    didn't shrink when the search-results-list grew
+  */
+  min-height: max-content;
+}
+
+/* Shimmer Effect */
+.search-modal-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 70%
+  );
+  animation: headerShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes headerShimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Search Input Container */
+.search-input-container {
+  position: relative;
+  z-index: 1;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 0.75rem 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.search-input-wrapper:focus-within {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.search-icon {
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 500;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-clear-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.search-clear-btn:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Search Stats */
+.search-stats {
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================
+   MODAL CLOSE BUTTON
+   =================================== */
+
+.search-modal-close {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.75rem;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  line-height: 1;
+}
+
+.search-modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+  transform: rotate(90deg) scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.search-modal-close:active {
+  transform: rotate(90deg) scale(1.05);
+}
+
+/* ===================================
+   MODAL CONTENT WRAPPER
+   =================================== */
+
+.search-modal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(180deg, 
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 50%,
+    var(--bg-primary) 100%
+  );
+}
+
+/* Custom Scrollbar */
+.search-modal-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.search-modal-content::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 5px;
+}
+
+.search-modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 5px;
+}
+
+.search-modal-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-purple);
+}
+
+/* ===================================
+   SEARCH RESULTS LIST
+   =================================== */
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Product Card - List View */
+.search-product-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: productFadeIn 0.5s ease both;
+}
+
+.search-product-card:nth-child(1) { animation-delay: 0.05s; }
+.search-product-card:nth-child(2) { animation-delay: 0.1s; }
+.search-product-card:nth-child(3) { animation-delay: 0.15s; }
+.search-product-card:nth-child(4) { animation-delay: 0.2s; }
+.search-product-card:nth-child(5) { animation-delay: 0.25s; }
+.search-product-card:nth-child(6) { animation-delay: 0.3s; }
+.search-product-card:nth-child(7) { animation-delay: 0.35s; }
+.search-product-card:nth-child(8) { animation-delay: 0.4s; }
+
+@keyframes productFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hover Effect */
+.search-product-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(90deg, 
+    rgba(124, 58, 237, 0.15) 0%,
+    transparent 100%
+  );
+  transition: width 0.4s ease;
+}
+
+.search-product-card:hover {
+  border-color: var(--primary-purple);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+  transform: translateX(8px);
+}
+
+.search-product-card:hover::before {
+  width: 100%;
+}
+
+/* Product Image Section */
+.search-product-image-wrapper {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+  border: 2px solid var(--border-color);
+  position: relative;
+  z-index: 1;
+}
+
+.search-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.search-product-card:hover .search-product-image {
+  transform: scale(1.1);
+}
+
+/* Product Tags */
+.search-product-tags {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  z-index: 2;
+}
+
+.search-product-tag {
+  padding: 0.25rem 0.625rem;
+  border-radius: 12px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px);
+}
+
+.tag-new {
+  background-color: rgba(16, 185, 129, 0.9);
+  color: white;
+}
+
+.tag-sale {
+  background-color: rgba(239, 68, 68, 0.9);
+  color: white;
+}
+
+.tag-featured {
+  background-color: rgba(124, 58, 237, 0.9);
+  color: white;
+}
+
+/* Product Info Section */
+.search-product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.search-product-category {
+  color: var(--primary-purple);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.search-product-name {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.search-product-card:hover .search-product-name {
+  color: var(--primary-purple);
+}
+
+.search-product-description {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Product Rating */
+.search-product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.rating-stars {
+  color: #fbbf24;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.rating-count {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Product Price Section */
+.search-product-price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.search-product-price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-purple);
+  line-height: 1;
+}
+
+.search-product-price-original {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  text-decoration: line-through;
+  margin-top: 0.25rem;
+}
+
+.search-discount-badge {
+  padding: 0.375rem 0.75rem;
+  background-color: var(--error);
+  color: white;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Stock Status */
+.search-stock-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.stock-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.search-stock-status.in-stock {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.search-stock-status.in-stock .stock-indicator {
+  background-color: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.search-stock-status.low-stock {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.search-stock-status.low-stock .stock-indicator {
+  background-color: var(--warning);
+  box-shadow: 0 0 8px var(--warning);
+}
+
+.search-stock-status.out-stock {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+}
+
+.search-stock-status.out-stock .stock-indicator {
+  background-color: var(--error);
+}
+
+/* Add to Cart Button */
+.search-add-to-cart {
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.search-add-to-cart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+}
+
+.search-add-to-cart:active {
+  transform: translateY(-1px);
+}
+
+.cart-icon {
+  font-size: 1.125rem;
+}
+
+/* ===================================
+   EMPTY STATE
+   =================================== */
+
+.search-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.search-empty-icon {
+  font-size: 5rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+  animation: emptyFloat 3s ease-in-out infinite;
+}
+
+@keyframes emptyFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.search-empty-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.search-empty-message {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+/* ===================================
+   LOADING STATE
+   =================================== */
+
+.search-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  gap: 1.5rem;
+}
+
+.search-loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid var(--border-color);
+  border-top-color: var(--primary-purple);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.search-loading-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ===================================
+   FILTER CHIPS (OPTIONAL)
+   =================================== */
+
+.search-filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.filter-chip {
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  border-color: var(--primary-purple);
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  .search-modal {
+    max-width: calc(100% - 1rem);
+    max-height: 90vh;
+  }
+
+  .search-modal-header {
+    padding: 1.5rem;
+  }
+
+  .search-modal-close {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .search-modal-content {
+    padding: 1.5rem;
+  }
+
+  .search-product-card {
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+
+  .search-product-image-wrapper {
+    width: 100%;
+    height: 200px;
+  }
+
+  .search-product-price-section {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+
+  .search-add-to-cart {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-modal-header {
+    padding: 1.25rem;
+  }
+
+  .search-input {
+    font-size: 1rem;
+  }
+
+  .search-product-name {
+    font-size: 1.125rem;
+  }
+
+  .search-product-price {
+    font-size: 1.75rem;
+  }
+
+  .search-product-card {
+    padding: 1rem;
+  }
+
+  .search-modal-content {
+    padding: 1rem;
+  }
+}
+
+/* ===================================
+   KEYBOARD SHORTCUTS HINT
+   =================================== */
+
+.search-shortcuts-hint {
+  position: absolute;
+  bottom: 1rem;
+  right: 2.5rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1;
+}
+
+.shortcut-key {
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+/* ===================================
+   ACCESSIBILITY
+   =================================== */
+
+.search-modal:focus-within {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-modal,
+  .search-modal-overlay,
+  .search-product-card,
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

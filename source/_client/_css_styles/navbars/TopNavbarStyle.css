@@ -1,0 +1,421 @@
+@import "UserInfoStyle.css";
+@import "CartIconStyle.css";
+
+/* .NavbarItems
+{
+    list-style:none;
+    overflow:hidden;
+} */
+
+*.Invisible
+{
+    display: none;
+}
+
+#TopNavbarHTML
+{
+    padding: 1.2%;
+    margin: 0px;
+    width: 100%;
+    max-width: 100svw;
+    height: var(--top-navbar-height);
+    min-height: var(--top-navbar-height);
+    max-height: var(--top-navbar-height);
+    
+    background-color: var(--bg-primary);
+    color: var(--topNavbarAnchorCol);
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 2px 8px var(--shadow);
+    /* border: 3px solid pink; */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+
+
+#TopNavbarHTML #TopNavbarContent
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 1rem 2rem;
+    /* grid-auto-flow: column; */
+    /* grid-template-columns: repeat(3, 2fr); */
+    /* border: 2px solid yellow; */
+    /* justify-content: space-between; */
+    padding: 0px;
+    margin: 0px;
+    /* gap: 0%; */
+    /* row-gap: 5px; */
+    /* max-width: inherit; */
+    /* width: 100%;
+    height: 100%; */
+    /* background-color: var(--bg-primary); */
+}
+
+#TopNavbarHTML #TopNavbarContent div#TopNavbarMidContentContainer
+{
+    /* border: 3px solid red; */
+    /* display: grid; */
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content:center;
+    gap: max(2.5svw, 30px);
+    /* width: 75%; */
+    max-width: 60svw;
+    /* width: 80svw; */
+    /* width: min(70%, 50svw); */
+    /* width: 65svw;
+    min-width: 65svw; */
+
+    /* grid-auto-flow: column; */
+    /* grid-template-columns: repeat(4, 1fr); */
+    /* grid-template-columns: 0.5fr 0.1fr 0.25fr 0.15fr; */
+    /* justify-content: space-between; */
+    /* padding: 0px;
+    margin: 0px; */
+}
+
+div#TopNavbarMidContentContainer:nth-child(n)
+{
+    margin: 0px;
+    height: 100%;
+    padding: 0px;
+    cursor: pointer;
+}
+
+div#TopNavbarSearchBar
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* flex: 1; */
+    max-width: 500px;
+    margin: 0 2rem;
+}
+
+
+div#TopNavbarSearchBar span
+{
+    /* margin: 0px;
+    padding: 0px;
+    align-self: center;
+    justify-self: center; */
+    cursor: pointer;
+    padding: 0.75rem;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+div#TopNavbarSearchBar span:hover
+{
+    color: var(--primary-purple);
+}
+
+/* div#TopNavbarSearchBar input[type='text']
+{
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+} */
+
+/* div#TopNavbarSearchBar input[type='text'].ShowSearch
+{
+    display: block;
+    box-sizing: border-box;
+    position: fixed;
+    inset: 15% 0px 0px 0px;
+    width: 100%;
+    max-height: 40px;
+
+    margin: 5% 0px 0px 0px;
+    padding: 0px;
+    border: 5px solid black;
+} */
+
+/* div#TopNavbarSearchBar input[type='text']:focus
+{
+    outline: none;
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+} */
+
+div#TopNavbarMidContentContainer #CartIconElement
+{
+    position: relative;
+    /* top: -8px;
+    right: -8px; */
+    /* background-color: var(--error); */
+    /* color: white; */
+    width: 100%;
+    border-radius: 50%;
+    /* width: 20px;
+    height: 20px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+#TopNavbarHTML #TopNavbarContent a
+{
+    cursor: pointer;
+}
+
+#TopNavbarHTML #TopNavbarContent div
+{
+    font-size: 2rem;
+}
+
+#TopNavbarHTML #TopNavbarContent div :nth-child(n)
+{
+    margin: auto 10px;
+}
+
+#TopNavbarHTML #TopNavbarContent div#WebsiteLogoContainer
+{
+    /* width: min(150px, 30svw); */
+    max-width: 30svw;
+    height: auto;
+    max-height: 10svh;
+}
+
+#TopNavbarHTML #TopNavbarContent div a#WebsiteLogo
+{
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-purple);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#TopNavbarHTML #TopNavbarContent div a#WebsiteLogo:hover
+{
+    color: var(--primary-purple-hover);
+}
+
+#TopNavbarHTML #TopNavbarContent div #TopNavbarToggleButton
+{
+    border: none;
+    background-color: var(--bg-primary);
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#TopNavbarHTML #TopNavbarContent div #TopNavbarToggleButton:hover
+{
+    color: var(--primary-purple);
+    transform: scale(1.1);
+}
+
+#TopNavbarHTML #TopNavbarContent div #TopNavbarToggleButton svg
+{
+    /* width: 100%; */
+    padding: auto;
+}
+
+#TopNavbarHTML #TopNavbarContent div button#TopNavbarToggleButton.hidden
+{
+    visibility: hidden;
+}
+
+#TopNavbarHTML #TopNavbarContent nav#TopNavbarItems
+{
+    display: flex;
+    flex-direction:row;
+    gap: 1.5rem;
+    align-items: center;
+    /* justify-content: space-between;
+    margin: auto 10px; */
+}
+
+#TopNavbarHTML #TopNavbarContent nav#TopNavbarItems.Resized
+{
+    /* Flex Direction remains the same  */
+    display: flex;
+    flex-direction: row;
+    /* border: 2px solid blue; */
+    /* width: min(30%, 12.5svw);
+    width: 250px; */
+    
+    position:relative;
+    /* left: 60%;
+    top: 13svh; */
+    /* transform: translate(-50%, -10%); */
+    width: 70svw;
+    gap: max(7.5svw, 35px);
+    max-width: 70svw;
+    
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+
+    /* flex: 1; */
+
+    /* Can't Change Variable Here. Only in at-ruled like @media... */
+    /* --top-navbar-height: 30svh; */
+}
+
+#TopNavbarHTML where
+
+#TopNavbarHTML #TopNavbarContent nav#TopNavbarItems :nth-child(n)
+{
+    margin: auto 5px;
+}
+#TopNavbarHTML #TopNavbarContent nav#TopNavbarItems a:nth-of-type(n)
+{
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+#TopNavbarHTML #TopNavbarContent nav#TopNavbarItems a:nth-of-type(n):hover
+{
+    text-decoration: none;
+    color: var(--primary-purple);
+}
+
+div#TopNavbarHTML div#TopNavbarContent nav#TopNavbarItems a.nav-link {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+div#TopNavbarHTML div#TopNavbarContent nav#TopNavbarItems a.nav-link:hover {
+    color: var(--primary-purple);
+    text-decoration: none;
+}
+
+nav#TopNavbarItems a#NavbarLinkItem {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav#TopNavbarItems a#NavbarLinkItem:hover {
+    text-decoration: none;
+    color: var(--primary-purple);
+}
+
+/* When class *resized* is defined*/
+/* #TopNavbarHTML div#TopNavbarContent.resized nav#TopNavbarItems
+{
+
+} */
+
+
+#TopNavbarHTML #TopNavbarContent nav a
+{
+    color: var(--topNavbarAnchorCol);
+    background-color: var(--bg-primary);
+    
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+#TopNavbarHTML #TopNavbarContent nav a:hover
+{
+    color: var(--topNavbarAnchorColHover);
+    /* border: 4px solid var(--iconBorder); */
+    /* background-color: var(--iconColor); */
+    text-decoration: overline;
+    /* text-shadow: 2px 2px 8px black; */
+}
+
+
+
+#TopNavbarHTML #TopNavbarContent nav #ThemeButton
+{
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+#TopNavbarHTML #TopNavbarContent nav #ThemeButton svg
+{
+    /* SOL 2 */
+    margin: 0;
+    padding: 0px;
+}
+
+#TopNavbarHTML #TopNavbarContent nav #ThemeButton:hover
+{
+    border-color: var(--primary-purple);
+    background-color: var(--bg-secondary);
+}
+
+
+
+/* ################################################### */
+
+
+
+/* Responsive Design and Resize Styling */
+@media screen and (max-width: 768px) {
+  .top-nav {
+    padding: 1rem;
+  }
+
+  .nav-actions {
+    gap: 1rem;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  /* Show the TopNavbar ShowNavbarLinkItems toggle button */
+  button#TopNavbarToggleButton.Hideable{
+    display: block;
+  }
+
+  /* Hide the SearchBar input */
+  /* div#TopNavbarSearchBar input
+  {
+    display: none;
+  } */
+  
+  :root
+  {
+    --top-navbar-height: 30svh;
+  }
+
+  div#TopNavbarHTML div#TopNavbarContent
+  {
+    flex-direction: column;
+  }
+  
+  /*
+    Hide the TopNavbarItems
+    For the full effect. Must specify `#TopNavbarHTML #TopNavbarContent`
+    before `TopNavbarItems`
+  */
+  #TopNavbarHTML #TopNavbarContent nav#TopNavbarItems
+  {
+    display: none;
+  }
+}

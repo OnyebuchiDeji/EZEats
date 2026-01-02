@@ -1,0 +1,50 @@
+<!-- 
+    CategoryPage:
+        This displays every product that belongs to a particular category.
+        It displays each product also under subheadings/subsections that
+        indicate the subcategory of that product, for categories that have subcategories
+        like Category Frozen, which has Red Meat, White Meat, Fish, Confectionaries, etc.
+ -->
+
+<!DOCTYPE html><html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="EZEats Grocery Website; Advanced Web Technology (CSC30025) Coursework Project">
+        <meta name="keywords" content="EZEats, Grocery, EZEats Grocery, Advanced Web Technology, Coursework, AWT, CSC30025,  HTML, CSS, JavaScript, PHP, AJAX">
+        <meta name="author" content="Ebenezer, Ayo-Metibemu, Keele Alumni">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>EZEats: Category Page</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="../_css_styles/BaseStyle.css">
+        <link rel="stylesheet" href="../_css_styles/CoreStyle.css">
+        <link rel="stylesheet" href="../_css_styles/CategoryStyle.css">
+        <link rel="stylesheet" href="../_css_styles/ProductsStyle.css">
+        <!-- ---- -->
+        
+        <!-- External Scripts -->
+        <!-- <script defer src= "https://unpkg.com/react@16/umd/react.production.min.js"></script> -->
+        <!-- -------- -->
+         
+        <!--
+            Custom Scripts
+        -->
+        <script type="module" src= "../_scripts/ui_semantics/LoadNavbars.js"></script>
+
+        <script defer type="module" src="../_scripts/system_semantics/NotificationControl.js"></script>
+        
+        <script defer type="module" src= "../_scripts/system_semantics/CategoryPage.js"></script>
+
+        <script defer src= "../_scripts/ui_semantics/ProductListView.js"></script>
+    </head>
+
+    <body>
+        <div id="TopNavbarHTML" class="ContentTarget"></div>
+
+        <div id="MainContentHTML"></div>
+        
+        <div id="BottomNavbarHTML"></div>
+
+    </body>
+</html>

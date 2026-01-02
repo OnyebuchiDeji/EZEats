@@ -1,0 +1,164 @@
+/* :root
+{
+    --navbarBGColor: rgb(12, 12, 12);
+    --navFontColor1: silver;
+    --navFontColor2: gainsboro;
+    --navFontColor3: whitesmoke;
+    --navFontColor4: darkgrey;
+} */
+
+
+.NavbarItems
+{
+    list-style:none;
+    overflow:hidden;
+}
+
+
+/* ______________________Foot bar____________________________*/
+#BottomNavbarHTML
+{
+    background-color: var(--bg-secondary);
+    border-top: 2px solid var(--border-color);
+    padding: 2rem;
+    margin-top: auto;
+    
+    /* margin: 0px;
+    padding: 2.5%; */
+    /* width: 100%; */
+    /* border: 3px solid yellow; */
+
+}
+
+#BottomNavbarHTML div#BottomNavbarContent
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* display: grid;
+    grid-template-rows: repeat(3, 1fr); */
+    
+    /* border: 5px solid purple; */
+    
+    /* text-align: center;
+    font-size: large; */
+    /* margin: auto;
+    padding: auto; */
+    /* padding: 5%; */
+    /* width: 100%;
+    align-content: center;
+    align-items: center;
+    text-align: center; */
+}
+#BottomNavbarHTML #BottomNavbarContent :nth-child(n)
+{
+    /* border: 5px solid green; */
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#BottomNavbarHTML #BottomNavbarContent a:nth-of-type(n)
+{
+
+}
+
+#BottomNavbarHTML #BottomNavbarContent a
+{
+    color: var(--bottomNavbarAnchorCol);
+    text-decoration: none;
+
+    margin: 10px 20px;
+}
+#BottomNavbarHTML #BottomNavbarContent a:hover
+{
+    color: var(--bottomNavbarAnchorColHover);
+    text-decoration: overline;
+}
+
+#BottomNavbarHTML #BottomNavbarContent nav.NavbarItems
+{
+    /* border: 2px solid yellow; */
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+#BottomNavbarHTML #BottomNavbarContent nav.NavbarItems a.NavbarLinkItem
+{
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+#BottomNavbarHTML #BottomNavbarContent nav.NavbarItems a.NavbarLinkItem:hover
+{
+    color: var(--primary-purple);
+}
+
+
+
+/* #BottomNavbarHTML #BottomNavbarContent .NavbarItems a
+{
+
+} */
+/* #BottomNavbarHTML #BottomNavbarContent .navbar-items a:hover
+{
+    color: var(--bottomNavbarAnchorColHover);
+} */
+
+#BottomNavbarHTML #BottomNavbarContent div#SocialMediaLinks
+{
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#BottomNavbarHTML #BottomNavbarContent #SocialMediaLinks a.social-icon
+{
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#BottomNavbarHTML #BottomNavbarContent #SocialMediaLinks a.social-icon:hover
+{
+    color: var(--primary-purple);
+    transform: translateY(-3px);
+}
+
+#BottomNavbarHTML #BottomNavbarContent div#CopyrightInfo
+{
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+}
+
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

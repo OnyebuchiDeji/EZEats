@@ -1,0 +1,48 @@
+#NotificationRibbon
+{
+    display: block;
+    position: fixed;
+    margin: auto;
+    width: 70svw;
+    max-width: 85svw;
+    height: 7.5svh;
+    max-height: 10svh;
+    /* right: 20%;
+    top: 7.5%; */
+    top: 10%;
+    left: 50%;
+    /* transition: left 3s; */
+    transform: translate(-50%, -10%);
+    font-size: large;
+    align-content: center;
+    justify-content: center;
+
+    z-index: 1002;
+}
+
+#NotificationRibbon.Visible
+{
+    display: block;
+}
+
+#NotificationRibbon.Invisible
+{
+    display: none;
+}
+
+p#NotificationRibbonMessageArea
+{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    text-align: center;
+    background-color: silver;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    /* margin-bottom: 2rem; */
+    box-shadow: 0 4px 12px var(--shadow);
+    opacity: 0.75;
+}

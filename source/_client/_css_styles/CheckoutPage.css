@@ -1,0 +1,1173 @@
+/* 
+    HTML Structure:
+
+<div class="checkout-main-content">
+  <div class="order-summary-wrapper">
+    
+    <!-- Banner -->
+    <div class="order-summary-banner">
+      <h1 class="banner-title">Your Order Summary</h1>
+      <span class="banner-subtitle">Review your purchase details</span>
+    </div>
+
+    <!-- Order Summary Card -->
+    <div class="order-summary-card">
+      
+      <!-- Items List -->
+      <div class="order-items-list">
+        
+        <div class="order-item-row">
+          <div class="item-details-section">
+            <div class="item-quantity-indicator">4</div>
+            <div class="item-info">
+              <h3 class="item-name">Whole Milk</h3>
+              <p class="item-meta">
+                <span class="item-unit-price">$1.50 each</span> • 1L
+              </p>
+            </div>
+          </div>
+          <div class="item-price-section">
+            <div class="item-total-price">$6.00</div>
+            <div class="item-price-label">Subtotal</div>
+          </div>
+        </div>
+
+        <div class="order-item-row">
+          <div class="item-details-section">
+            <div class="item-quantity-indicator">3</div>
+            <div class="item-info">
+              <h3 class="item-name">Free Range Eggs</h3>
+              <p class="item-meta">
+                <span class="item-unit-price">$2.40 each</span> • Dozen
+              </p>
+            </div>
+          </div>
+          <div class="item-price-section">
+            <div class="item-total-price">$7.20</div>
+            <div class="item-price-label">Subtotal</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Total Section -->
+      <div class="order-total-section">
+        <div class="total-row">
+          <span class="total-label">Subtotal</span>
+          <span class="total-value">$27.70</span>
+        </div>
+        <div class="total-row discount">
+          <span class="total-label">Discount</span>
+          <span class="total-value">$5.00</span>
+        </div>
+        <div class="total-row tax">
+          <span class="total-label">Tax (VAT)</span>
+          <span class="total-value">$2.27</span>
+        </div>
+        <div class="total-row">
+          <span class="total-label">Shipping</span>
+          <span class="total-value">$4.99</span>
+        </div>
+        <div class="total-row grand-total">
+          <span class="total-label">Grand Total</span>
+          <span class="total-value">$29.96</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Purchase Message -->
+    <div class="purchase-message success">
+      <div class="message-icon">✓</div>
+      <div class="message-content">
+        <h3 class="message-title">Payment Successful!</h3>
+        <p class="message-text">Your order has been confirmed and will be delivered soon.</p>
+      </div>
+    </div>
+
+    <!-- Or Error Message -->
+    <!-- <div class="purchase-message error">
+      <div class="message-icon">✕</div>
+      <div class="message-content">
+        <h3 class="message-title">Payment Failed</h3>
+        <p class="message-text">There was an issue processing your payment. Please try again.</p>
+      </div>
+    </div> -->
+
+    <!-- Purchase Button -->
+    <button class="purchase-button">
+      <span class="purchase-button-icon">
+        🛒 Complete Purchase
+      </span>
+    </button>
+
+  </div>
+</div>
+
+ */
+
+ /* CheckoutPage.css - Complete Checkout/Order Summary Page */
+
+/* ===================================
+   MAIN CONTENT AREA
+   =================================== */
+
+.checkout-main-content {
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  background: linear-gradient(180deg, 
+    var(--bg-primary) 0%, 
+    var(--bg-secondary) 50%,
+    var(--bg-primary) 100%
+  );
+  position: relative;
+}
+
+/* Decorative Background Circles */
+.checkout-main-content::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatSlow 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.checkout-main-content::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  left: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatSlow 18s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.05);
+  }
+}
+
+/* ===================================
+   ORDER SUMMARY WRAPPER
+   =================================== */
+
+.order-summary-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  animation: fadeInScale 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ===================================
+   ORDER SUMMARY BANNER
+   =================================== */
+
+.order-summary-banner {
+  background: linear-gradient(135deg, 
+    var(--primary-purple) 0%, 
+    var(--secondary-purple) 50%,
+    var(--primary-purple) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  padding: 2.5rem 3rem;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: none;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Animated Shimmer Effect */
+.order-summary-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 70%
+  );
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Decorative Corner Glow */
+.order-summary-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Banner Title */
+.banner-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  animation: slideInFromTop 0.6s ease 0.2s both;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.banner-subtitle {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  margin-top: 0.75rem;
+  display: block;
+  position: relative;
+  z-index: 1;
+  animation: slideInFromTop 0.6s ease 0.3s both;
+}
+
+/* ===================================
+   ORDER SUMMARY CARD
+   =================================== */
+
+.order-summary-card {
+  background-color: var(--bg-primary);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 20px 60px var(--shadow);
+  border: 2px solid var(--border-color);
+  border-top: none;
+  overflow: hidden;
+  padding: 3rem;
+  animation: slideUp 0.6s ease 0.4s both;
+  position: relative;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle top gradient */
+.order-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--primary-purple) 0%,
+    var(--secondary-purple) 50%,
+    var(--primary-purple) 100%
+  );
+  background-size: 200% 100%;
+  animation: gradientSlide 3s ease infinite;
+}
+
+@keyframes gradientSlide {
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+}
+
+/* Card Section Header */
+.card-section-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.card-section-header::before {
+  content: '';
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-purple), var(--secondary-purple));
+  border-radius: 3px;
+  position: absolute;
+  left: -1.5rem;
+}
+
+/* ===================================
+   ORDER ITEMS LIST
+   =================================== */
+
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.order-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, 
+    rgba(124, 58, 237, 0.03) 0%, 
+    rgba(167, 139, 250, 0.03) 100%
+  );
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInSlide 0.5s ease both;
+}
+
+.order-item-row:nth-child(1) { animation-delay: 0.1s; }
+.order-item-row:nth-child(2) { animation-delay: 0.2s; }
+.order-item-row:nth-child(3) { animation-delay: 0.3s; }
+.order-item-row:nth-child(4) { animation-delay: 0.4s; }
+.order-item-row:nth-child(5) { animation-delay: 0.5s; }
+.order-item-row:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.order-item-row:hover {
+  border-color: var(--primary-purple);
+  background: linear-gradient(135deg, 
+    rgba(124, 58, 237, 0.08) 0%, 
+    rgba(167, 139, 250, 0.08) 100%
+  );
+  transform: translateX(8px);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.15);
+}
+
+/* Item Details Section */
+.item-details-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.item-quantity-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  font-weight: 800;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+  position: relative;
+}
+
+.item-quantity-indicator::after {
+  content: '×';
+  position: absolute;
+  font-size: 0.875rem;
+  bottom: -2px;
+  right: 2px;
+  opacity: 0.8;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+}
+
+.item-meta {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item-unit-price {
+  color: var(--primary-purple);
+  font-weight: 600;
+}
+
+/* Item Price Section */
+.item-price-section {
+  text-align: right;
+}
+
+.item-total-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-purple);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.item-price-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* ===================================
+   ORDER TOTAL SECTION
+   =================================== */
+
+.order-total-section {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, 
+    rgba(124, 58, 237, 0.08) 0%, 
+    rgba(167, 139, 250, 0.08) 100%
+  );
+  border-radius: 16px;
+  border: 2px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle shimmer on total section */
+.order-total-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmerTotal 3s ease-in-out infinite;
+}
+
+@keyframes shimmerTotal {
+  to {
+    left: 100%;
+  }
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  z-index: 1;
+}
+
+.total-row:last-child {
+  border-bottom: none;
+}
+
+.total-label {
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.total-value {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* Discount Row */
+.total-row.discount .total-label,
+.total-row.discount .total-value {
+  color: var(--success);
+}
+
+.total-row.discount .total-value::before {
+  content: '-';
+}
+
+/* Tax Row */
+.total-row.tax .total-label::after {
+  content: 'ⓘ';
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-left: 0.5rem;
+  cursor: help;
+}
+
+/* Grand Total Row - Highly Emphasized */
+.total-row.grand-total {
+  margin-top: 1rem;
+  padding: 1.5rem 0 0 0;
+  border-top: 3px solid var(--primary-purple);
+  border-bottom: none;
+}
+
+.total-row.grand-total .total-label {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.total-row.grand-total .total-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(124, 58, 237, 0.6));
+  }
+}
+
+/* ===================================
+   PURCHASE MESSAGE
+   =================================== */
+
+.purchase-message {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: messageSlideIn 0.5s ease 0.7s both;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Message pulse effect */
+.purchase-message::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: messagePulse 2s ease-in-out infinite;
+}
+
+@keyframes messagePulse {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+}
+
+.message-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.message-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.message-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.375rem 0;
+  line-height: 1.2;
+}
+
+.message-text {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Success Message Variant */
+.purchase-message.success {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: var(--success);
+}
+
+.purchase-message.success::before {
+  background-color: rgba(16, 185, 129, 0.2);
+}
+
+.purchase-message.success .message-icon {
+  color: var(--success);
+  animation: successBounce 0.6s ease;
+}
+
+@keyframes successBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.purchase-message.success .message-title {
+  color: var(--success);
+}
+
+.purchase-message.success .message-text {
+  color: var(--text-primary);
+}
+
+/* Error Message Variant */
+.purchase-message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: var(--error);
+}
+
+.purchase-message.error::before {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+.purchase-message.error .message-icon {
+  color: var(--error);
+  animation: errorShake 0.5s ease;
+}
+
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+.purchase-message.error .message-title {
+  color: var(--error);
+}
+
+.purchase-message.error .message-text {
+  color: var(--text-primary);
+}
+
+/* Info Message Variant */
+.purchase-message.info {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+}
+
+.purchase-message.info::before {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.purchase-message.info .message-icon {
+  color: #3b82f6;
+}
+
+.purchase-message.info .message-title {
+  color: #3b82f6;
+}
+
+.purchase-message.info .message-text {
+  color: var(--text-primary);
+}
+
+/* Warning Message Variant */
+.purchase-message.warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-color: var(--warning);
+}
+
+.purchase-message.warning::before {
+  background-color: rgba(245, 158, 11, 0.2);
+}
+
+.purchase-message.warning .message-icon {
+  color: var(--warning);
+  animation: warningPulse 1s ease infinite;
+}
+
+@keyframes warningPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.purchase-message.warning .message-title {
+  color: var(--warning);
+}
+
+.purchase-message.warning .message-text {
+  color: var(--text-primary);
+}
+
+/* ===================================
+   PURCHASE BUTTON
+   =================================== */
+
+.purchase-button {
+  width: 100%;
+  margin-top: 2.5rem;
+  padding: 1.75rem 3rem;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  background-size: 200% 200%;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.375rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.4);
+  position: relative;
+  overflow: hidden;
+  animation: buttonSlideIn 0.6s ease 0.8s both;
+}
+
+@keyframes buttonSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button shimmer effect */
+.purchase-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.purchase-button:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(124, 58, 237, 0.6);
+  background-position: 100% 50%;
+}
+
+.purchase-button:hover::before {
+  left: 100%;
+}
+
+.purchase-button:active {
+  transform: translateY(-3px) scale(1);
+}
+
+/* Loading state */
+.purchase-button.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.purchase-button.loading::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: buttonSpin 0.8s linear infinite;
+  margin-left: 1rem;
+}
+
+@keyframes buttonSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Disabled state */
+.purchase-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.purchase-button:disabled:hover {
+  transform: none;
+  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.4);
+}
+
+/* Button with icon */
+.purchase-button-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+}
+
+/* ===================================
+   EMPTY STATE
+   =================================== */
+
+.order-empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.empty-icon {
+  font-size: 5rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+  animation: floatEmpty 3s ease-in-out infinite;
+}
+
+@keyframes floatEmpty {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.empty-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.empty-message {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.empty-action-btn {
+  padding: 1.25rem 3rem;
+  background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.empty-action-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(124, 58, 237, 0.4);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  .checkout-main-content {
+    padding: 2rem 1rem;
+  }
+
+  .order-summary-wrapper {
+    max-width: 100%;
+  }
+
+  .order-summary-banner {
+    padding: 2rem 1.5rem;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .banner-title {
+    font-size: 2.25rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1rem;
+  }
+
+  .order-summary-card {
+    padding: 2rem 1.5rem;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .order-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .item-details-section {
+    width: 100%;
+  }
+
+  .item-price-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .order-total-section {
+    padding: 1.5rem;
+  }
+
+  .total-row.grand-total .total-label {
+    font-size: 1.5rem;
+  }
+
+  .total-row.grand-total .total-value {
+    font-size: 2rem;
+  }
+
+  .purchase-message {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .purchase-button {
+    padding: 1.5rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-summary-banner {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .banner-title {
+    font-size: 1.875rem;
+  }
+
+  .order-summary-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .card-section-header {
+    font-size: 1.25rem;
+  }
+
+  .item-quantity-indicator {
+    min-width: 45px;
+    height: 45px;
+    font-size: 1.125rem;
+  }
+
+  .item-name {
+    font-size: 1rem;
+  }
+
+  .item-total-price {
+    font-size: 1.25rem;
+  }
+
+  .total-row.grand-total .total-label {
+    font-size: 1.25rem;
+  }
+
+  .total-row.grand-total .total-value {
+    font-size: 1.75rem;
+  }
+
+  .message-icon {
+    font-size: 1.5rem;
+  }
+
+  .message-title {
+    font-size: 1.125rem;
+  }
+
+  .message-text {
+    font-size: 0.9375rem;
+  }
+
+  .purchase-button {
+    padding: 1.25rem 1.75rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* ===================================
+   PRINT STYLES
+   =================================== */
+
+@media print {
+  .checkout-main-content {
+    background: white;
+    padding: 0;
+  }
+
+  .checkout-main-content::before,
+  .checkout-main-content::after {
+    display: none;
+  }
+
+  .order-summary-banner {
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .order-summary-card {
+    box-shadow: none;
+    border: 2px solid var(--border-color);
+  }
+
+  .purchase-button,
+  .purchase-message {
+    display: none;
+  }
+
+  .order-item-row {
+    break-inside: avoid;
+  }
+}
+
+
+/* Quick Fix to Issue of not being able
+ to click on button due to styles
+
+ But turned out these were not really the issue
+*/
+
+/* .purchase-button {
+  position: relative !important;
+  z-index: 1 !important;
+  pointer-events: auto !important;
+}
+
+.purchase-button::before,
+.purchase-button::after {
+  pointer-events: none !important;
+}
+
+.purchase-button::before
+{
+  z-index: 0;
+}
+.purchase-button::after
+{
+  z-index: 2;
+}
+
+.order-summary-wrapper,
+.order-summary-card {
+  overflow: visible !important; /* Instead of hidden */
+  /* z-index: 0; */
+/* } */

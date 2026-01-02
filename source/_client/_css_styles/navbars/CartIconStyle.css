@@ -1,0 +1,40 @@
+/* div#CartIconElement
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+
+    gap: 0px;
+    margin: 0px;
+    padding: 0px;
+} */
+
+/* div#CartIconElement svg
+{
+} */
+
+div#CartIconElement span
+{
+    /* width: 5svw; */
+    font-size:medium;
+    text-decoration: solid;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--error);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
